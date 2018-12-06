@@ -37,11 +37,11 @@ You can pass an options object when creating a new notificafion handler:
 
 ```javascript
 window.notification = new notification({
-    position:    'top-left',
+    position: 'top-left',
     thickBorder: 'bottom',
-    duration:    2000,
-    transition:  100,
-    maxActive:   5
+    duration: 2000,
+    transition: 100,
+    maxActive: 5
 });
 ```
 
@@ -49,17 +49,17 @@ The handler is now ready with your custom settings. To call for a new notificati
 
 ```JavaScript
 let id = window.notification.new({
-   type:        'info',
-   title:       'My test notification',
-   message:     'My test message.',
+   type: 'info',
+   title: 'My test notification',
+   message: 'My test message.',
    thickBorder: 'top'
-   iconless:    false,
-   closable:    true,
-   sticky:      true,
-   renderTo:    document.body,
-   CBtitle:     'My callback',
-   callback:    function() {
-       alert('Called from My test notification');
+   iconless: false,
+   closable: true,
+   sticky: true,
+   renderTo: document.body,
+   CBtitle: 'My callback',
+   callback: function() {
+     alert('Called from My test notification');
    }
 });
 ```
@@ -81,7 +81,7 @@ Finaly, the handler keeps all notifications in an history object, so you can get
 
 ```javascript
 let historyLength = window.notification.getHistoryLength();
-let history       = window.notification.getHistory();
+let history = window.notification.getHistory();
 ```
 
 #### Further reading
