@@ -4,13 +4,11 @@ Notification.js is a standalone JavaScript class that allows you to easily handl
 
 [![GitHub version](https://badge.fury.io/gh/boennemann%2Fbadges.svg)](https://github.com/ArthurBeaulieu/Notification.js) [![Open Source Love](https://badges.frapsoft.com/os/gpl/gpl.svg?v=102)](https://github.com/ArthurBeaulieu/Notification.js)
 
----
-
 ## Get started
 
 Notification.js handles four different types of notifications: Success, Info, Warning and Error.
 
-The first step for you to get started with Notification.js is to copy both the `dist/Notification.min.js` and `dist/notification.min.css` files in your code base. You are free to organize those file the way you want. Note that if you want to tweak the code, preferably use the files located in the `src` directory. Once pasted, don't forget to include the style and the script in your HTML page. You are now good to go!
+The first step for you to get started with Notification.js is to copy both the `dist/Notification.min.js` and `dist/notification.min.css` files in your code base, and the `img` folder to put beside the `dist` folder. You are free to organize those file the way you want, except for the `img` folder (otherwise you might modify the Js and re-compile it yourself). Note that if you want to tweak the code, preferably use the files located in the `src` directory. Once pasted, don't forget to include the style and the script in your HTML page. You are now good to go!
 
 #### Basic usage
 
@@ -116,8 +114,6 @@ In the `doc` folder, there is a JSDoc that has been generated from the JavaScrip
 | `renderTo`    | Handler container | DOM Object                               |
 | `CBtitle`     | `''`              | String                                   |
 | `callback`    | `null`            | JavaScript function                      |
-
----
 
 ## Contribute
 

@@ -162,7 +162,7 @@
                 <h3>Going further:</h3>
                 <div class="row">
                     <div class="col-seven">
-                        <p class="paragraph">If you want to have a better understanding of the Notification class, without spending hours parsing the source code, you can access the <a href="#" target="_blank">JSDoc</a> documentation. Now that your are familliar with the Notification system, here are several other customization that you can do :</p>
+                        <p class="paragraph">If you want to have a better understanding of the Notification class, without spending hours parsing the source code, you can access the <a href="../doc/index.html" target="_blank">JSDoc</a> documentation. Now that your are familliar with the Notification system, here are several other customization that you can do :</p>
                         <p class="paragraph">If you are a developper that is familliar with compiled css, you can set your own notification special variables in the <code class="inline">notification.scss</code> file to obtain a fully personnalized notification system: margin, padding, icon size, border sizes and width.</p>
                         <p class="paragraph">If you intend to change the color values in the <code class="inline">notification.scss</code> file, beware to change them accordingly in the <code class="inline">Notification.js</code> constructor, in the <code class="inline">this._default</code> object since they are used on both file for different purpose.</p>
                         <p class="paragraph">Also, if you want to change the notification icons, it is a little less intuitive than just dropping a new icon in the img folder, but for the best. Notification.js uses vectors instead of rasterized images, for better performances. Furthermore, Notification.js doesn't uses any <code class="inline">.svg</code> file: svg path are inline coded in the <code class="inline">_buildUI()</code> method. To change it, open the <code class="inline">.svg</code> file you want to get the vector from, grab the <code class="inline">d</code> attribute content, in the <code class="inline">path</code> tag, and copy / paste it into the Javascript code. Path lines are the longer ones in the file, you can't miss them in the code...</p>
@@ -195,7 +195,7 @@
                        alert('Called from my notification');
                    } : undefined)
                 };
-                
+
                 if (options.message.length === 0) {
                     notification.error({ message: 'You didn\'t gave the to the playground a type and/or a title.', renderTo: document.getElementById('renderme') });
                 } else {

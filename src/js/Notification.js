@@ -412,14 +412,14 @@ class Notification {
         notification.dom.classList.add(notification.type);
 
       if (!notification.iconless) {
-        notification.dom.icon.src = `./assets/${notification.type}.svg`;
+        notification.dom.icon.src = `./img/${notification.type}.svg`;
       }
 
     } else {
       notification.dom.classList.add('info');
 
       if (!notification.iconless) {
-        notification.dom.icon.src = './assets/info.svg';
+        notification.dom.icon.src = './img/info.svg';
       }
     }
   }
