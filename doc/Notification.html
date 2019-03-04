@@ -45,13 +45,11 @@
     
 
     
-    <p class="summary">Create an instance of a notification handler</p>
-    
 
 
 
 <div class="description">
-    Notification Class to automatically handle one or several notification of different types at the same time.
+    Notification Singleton Class to automatically handle one or several notification of different types at the same time.
 </div>
 
 
@@ -255,7 +253,7 @@
                 </td>
             
 
-            <td class="description last">Notification life cycle duration (in ms)</td>
+            <td class="description last">Notification life cycle duration (in ms) in range N*</td>
         </tr>
 
     
@@ -294,7 +292,7 @@
                 </td>
             
 
-            <td class="description last">Notification fade animation transition timing (in ms)</td>
+            <td class="description last">Notification fade animation transition timing (in ms) in range N*</td>
         </tr>
 
     
@@ -333,7 +331,7 @@
                 </td>
             
 
-            <td class="description last">Maximum of simultaneously opened notification</td>
+            <td class="description last">Maximum of simultaneously opened notification in range N*</td>
         </tr>
 
     
@@ -391,7 +389,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line71">line 71</a>
+        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line10">line 10</a>
     </li></ul></dd>
     
 
@@ -435,6 +433,730 @@
     
 
     
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id="_active"><span class="type-signature">(private) </span>_active<span class="type-signature"> :object</span></h4>
+
+
+
+
+<div class="description">
+    Active notifications object : retrieve a notification using its ID (this._active[ID])
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">object</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line39">line 39</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="_default"><span class="type-signature">(private) </span>_default<span class="type-signature"> :objecy</span></h4>
+
+
+
+
+<div class="description">
+    Notification handler default values
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">objecy</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line45">line 45</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="_dismissAllLock"><span class="type-signature">(private) </span>_dismissAllLock<span class="type-signature"> :boolean</span></h4>
+
+
+
+
+<div class="description">
+    Dismiss all operation in progress flag
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">boolean</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line33">line 33</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="_dom"><span class="type-signature">(private) </span>_dom<span class="type-signature"> :object</span></h4>
+
+
+
+
+<div class="description">
+    Notification handler container node
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">object</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line36">line 36</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="_duration"><span class="type-signature">(private) </span>_duration<span class="type-signature"> :number</span></h4>
+
+
+
+
+<div class="description">
+    The Notification on screen duration in ms
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">number</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line54">line 54</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="_maxActive"><span class="type-signature">(private) </span>_maxActive<span class="type-signature"> :number</span></h4>
+
+
+
+
+<div class="description">
+    The maximum amount of active Notification
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">number</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line60">line 60</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="_position"><span class="type-signature">(private) </span>_position<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    The handler position in viewport - <i>top-left; top-right; bottom-left; bottom-right;</i>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line48">line 48</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="_queue"><span class="type-signature">(private) </span>_queue<span class="type-signature"> :object</span></h4>
+
+
+
+
+<div class="description">
+    Queue notifications when max active has been reached
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">object</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line42">line 42</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="_thickBorder"><span class="type-signature">(private) </span>_thickBorder<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    The thick border position in the Notification - <i>top; bottom; left; right; none;</i>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line51">line 51</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="_transition"><span class="type-signature">(private) </span>_transition<span class="type-signature"> :number</span></h4>
+
+
+
+
+<div class="description">
+    The fade transition time in ms
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">number</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line57">line 57</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+    
 
     
         <h3 class="subsection-title">Methods</h3>
@@ -445,11 +1167,252 @@
     
 
     
-    <h4 class="name" id="._buildUI"><span class="type-signature">(private, static) </span>_buildUI<span class="signature">(notification)</span><span class="type-signature"> &rarr; {object}</span></h4>
+    <h4 class="name" id="._attach"><span class="type-signature">(private, static) </span>_attach<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
-    <p class="summary">Build notification UI</p>
+
+
+
+<div class="description">
+    Attach the notification handler to the dom using a fragment
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>July 2018</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Arthur Beaulieu</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line210">line 210</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="._buildNotificationType"><span class="type-signature">(private, static) </span>_buildNotificationType<span class="signature">(notification)</span><span class="type-signature"></span></h4>
+    
+
+    
+    <p class="summary">Attach proper assets and css</p>
+    
+
+
+
+<div class="description">
+    Fills the Notification icon and class according to its inner type
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>notification</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The notification to fill</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>March 2019</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Arthur Beaulieu</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line395">line 395</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="._buildUI"><span class="type-signature">(private, static) </span>_buildUI<span class="signature">(notification)</span><span class="type-signature"> &rarr; {object}</span></h4>
+    
+
     
 
 
@@ -814,7 +1777,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line420">line 420</a>
+        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line296">line 296</a>
     </li></ul></dd>
     
 
@@ -870,11 +1833,156 @@
     
 
     
-    <h4 class="name" id="._checkCounter"><span class="type-signature">(private, static) </span>_checkCounter<span class="signature">(notification)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="._buildUIDom"><span class="type-signature">(private, static) </span>_buildUIDom<span class="signature">(notification)</span><span class="type-signature"></span></h4>
     
 
     
-    <p class="summary">Check a notification counter and act accordingly</p>
+    <p class="summary">Create the Notification DOM tree</p>
+    
+
+
+
+<div class="description">
+    Build all the Notification internal structure
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>notification</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The notification to create</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>March 2019</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Arthur Beaulieu</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line354">line 354</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="._checkCounter"><span class="type-signature">(private, static) </span>_checkCounter<span class="signature">(notification)</span><span class="type-signature"></span></h4>
+    
+
     
 
 
@@ -922,7 +2030,7 @@
             <td class="type">
             
                 
-<span class="param-type">object</span>
+<span class="param-type">Object</span>
 
 
             
@@ -1124,7 +2232,154 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line575">line 575</a>
+        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line605">line 605</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="._checkOptionsValidity"><span class="type-signature">(private, static) </span>_checkOptionsValidity<span class="signature">(options)</span><span class="type-signature"></span></h4>
+    
+
+    
+    <p class="summary">Check the Notification options validity</p>
+    
+
+
+
+<div class="description">
+    Check a Notification options object against the required parameters.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The notification options to check validity</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>March 2019</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Arthur Beaulieu</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line809">line 809</a>
     </li></ul></dd>
     
 
@@ -1161,8 +2416,6 @@
     <h4 class="name" id="._clearRequestCount"><span class="type-signature">(private, static) </span>_clearRequestCount<span class="signature">(notification)</span><span class="type-signature"></span></h4>
     
 
-    
-    <p class="summary">Reset request count to one</p>
     
 
 
@@ -1343,7 +2596,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line611">line 611</a>
+        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line640">line 640</a>
     </li></ul></dd>
     
 
@@ -1380,8 +2633,6 @@
     <h4 class="name" id="._close"><span class="type-signature">(private, static) </span>_close<span class="signature">(notification)</span><span class="type-signature"></span></h4>
     
 
-    
-    <p class="summary">Close the notification with a fade out animation</p>
     
 
 
@@ -1429,7 +2680,10 @@
             <td class="type">
             
                 
-<span class="param-type">object</span>
+<span class="param-type">Object</span>
+|
+
+<span class="param-type">Object</span>
 
 
             
@@ -1494,7 +2748,7 @@
             <td class="type">
             
                 
-<span class="param-type">bool</span>
+<span class="param-type">boolean</span>
 
 
             
@@ -1608,7 +2862,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line635">line 635</a>
+        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line482">line 482</a>
     </li></ul></dd>
     
 
@@ -1645,8 +2899,6 @@
     <h4 class="name" id="._decrementRequestCounter"><span class="type-signature">(private, static) </span>_decrementRequestCounter<span class="signature">(notification, force)</span><span class="type-signature"></span></h4>
     
 
-    
-    <p class="summary">Decrement notification requestCount</p>
     
 
 
@@ -1694,7 +2946,7 @@
             <td class="type">
             
                 
-<span class="param-type">object</span>
+<span class="param-type">Object</span>
 
 
             
@@ -1919,7 +3171,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line693">line 693</a>
+        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line564">line 564</a>
     </li></ul></dd>
     
 
@@ -1956,8 +3208,6 @@
     <h4 class="name" id="._dim"><span class="type-signature">(private, static) </span>_dim<span class="signature">(notification)</span><span class="type-signature"></span></h4>
     
 
-    
-    <p class="summary">Dim the notification with a half fade out animation</p>
     
 
 
@@ -2005,7 +3255,7 @@
             <td class="type">
             
                 
-<span class="param-type">object</span>
+<span class="param-type">Object</span>
 
 
             
@@ -2184,7 +3434,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line739">line 739</a>
+        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line679">line 679</a>
     </li></ul></dd>
     
 
@@ -2218,11 +3468,9 @@
     
 
     
-    <h4 class="name" id="._eventListener"><span class="type-signature">(private, static) </span>_eventListener<span class="signature">(notification)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="._events"><span class="type-signature">(private, static) </span>_events<span class="signature">(notification)</span><span class="type-signature"></span></h4>
     
 
-    
-    <p class="summary">Listen to user interaction</p>
     
 
 
@@ -2270,7 +3518,7 @@
             <td class="type">
             
                 
-<span class="param-type">object</span>
+<span class="param-type">Object</span>
 
 
             
@@ -2495,7 +3743,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line779">line 779</a>
+        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line226">line 226</a>
     </li></ul></dd>
     
 
@@ -2665,7 +3913,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line856">line 856</a>
+        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line892">line 892</a>
     </li></ul></dd>
     
 
@@ -2702,8 +3950,6 @@
     <h4 class="name" id="._incrementRequestCounter"><span class="type-signature">(private, static) </span>_incrementRequestCounter<span class="signature">(notification)</span><span class="type-signature"></span></h4>
     
 
-    
-    <p class="summary">Increment notification requestCount</p>
     
 
 
@@ -2953,7 +4199,606 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line891">line 891</a>
+        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line519">line 519</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="._init"><span class="type-signature">(private, static) </span>_init<span class="signature">(options<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Create the handler DOM element, set default values, test given options and properly add CSS class to the handler
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">The notification handler global options
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>position</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    top-right
+                
+                </td>
+            
+
+            <td class="description last"><i>top-left; top-right; bottom-left; bottom-right;</i></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>thickBorder</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    top
+                
+                </td>
+            
+
+            <td class="description last"><i>top; bottom; left; right; none;</i></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>duration</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    3000
+                
+                </td>
+            
+
+            <td class="description last">Notification life cycle duration (in ms) in range N*</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>transition</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    100
+                
+                </td>
+            
+
+            <td class="description last">Notification fade animation transition timing (in ms) in range N*</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>maxActive</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    5
+                
+                </td>
+            
+
+            <td class="description last">Maximum of simultaneously opened notification in range N*</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>July 2018</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Arthur Beaulieu</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line72">line 72</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="._open"><span class="type-signature">(private, static) </span>_open<span class="signature">(notification)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Open and add the notification to the container
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>notification</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The notification object
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Notification personnal ID</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>dom</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Notifiction DOM element</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>June 2018</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Arthur Beaulieu</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line455">line 455</a>
     </li></ul></dd>
     
 
@@ -2990,8 +4835,6 @@
     <h4 class="name" id="._resetTimeout"><span class="type-signature">(private, static) </span>_resetTimeout<span class="signature">(notification)</span><span class="type-signature"></span></h4>
     
 
-    
-    <p class="summary">Reset a notification life cycle</p>
     
 
 
@@ -3039,7 +4882,10 @@
             <td class="type">
             
                 
-<span class="param-type">object</span>
+<span class="param-type">Object</span>
+|
+
+<span class="param-type">Object</span>
 
 
             
@@ -3172,7 +5018,399 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line987">line 987</a>
+        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line659">line 659</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="._setAttributesDefault"><span class="type-signature">(private, static) </span>_setAttributesDefault<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+    <p class="summary">Check the notification singleton options validity</p>
+    
+
+
+
+<div class="description">
+    Fallback on default attributes value if the notification singleton options are invalid
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>March 2019</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Arthur Beaulieu</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line169">line 169</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="._setOptionsDefault"><span class="type-signature">(private, static) </span>_setOptionsDefault<span class="signature">(options)</span><span class="type-signature"></span></h4>
+    
+
+    
+    <p class="summary">Set singleton options</p>
+    
+
+
+
+<div class="description">
+    Build the notification singleton according to the user options
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The singleton options to set</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>March 2019</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Arthur Beaulieu</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line135">line 135</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="._setOptionsFallback"><span class="type-signature">(private, static) </span>_setOptionsFallback<span class="signature">(options)</span><span class="type-signature"></span></h4>
+    
+
+    
+    <p class="summary">Set Notification fallback options</p>
+    
+
+
+
+<div class="description">
+    Check a Notification options object and fill it with default value in case they are empty.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The notification options to fill with default value if empty</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>March 2019</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Arthur Beaulieu</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line842">line 842</a>
     </li></ul></dd>
     
 
@@ -3209,8 +5447,6 @@
     <h4 class="name" id="._start"><span class="type-signature">(private, static) </span>_start<span class="signature">(notification)</span><span class="type-signature"></span></h4>
     
 
-    
-    <p class="summary">Start a notification life cycle</p>
     
 
 
@@ -3368,7 +5604,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line1014">line 1014</a>
+        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line428">line 428</a>
     </li></ul></dd>
     
 
@@ -3405,8 +5641,6 @@
     <h4 class="name" id="._unDim"><span class="type-signature">(private, static) </span>_unDim<span class="signature">(notification)</span><span class="type-signature"></span></h4>
     
 
-    
-    <p class="summary">Restore notification opacity</p>
     
 
 
@@ -3610,203 +5844,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line1049">line 1049</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="._updateHistory"><span class="type-signature">(private, static) </span>_updateHistory<span class="signature">(notification)</span><span class="type-signature"></span></h4>
-    
-
-    
-    <p class="summary">Update the handler history</p>
-    
-
-
-
-<div class="description">
-    Add a notification to the history. Might be executed when a notification is being closed
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>notification</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The notification object
-                <h6>Properties</h6>
-                
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Notification personnal ID</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-    <dt class="tag-since">Since:</dt>
-    <dd class="tag-since"><ul class="dummy"><li>June 2018</li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-author">Author:</dt>
-    <dd class="tag-author">
-        <ul>
-            <li>Arthur Beaulieu</li>
-        </ul>
-    </dd>
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line1089">line 1089</a>
+        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line713">line 713</a>
     </li></ul></dd>
     
 
@@ -3843,8 +5881,6 @@
     <h4 class="name" id=".dismiss"><span class="type-signature">(static) </span>dismiss<span class="signature">(id)</span><span class="type-signature"></span></h4>
     
 
-    
-    <p class="summary">Dismiss a notification</p>
     
 
 
@@ -3892,7 +5928,7 @@
             <td class="type">
             
                 
-<span class="param-type">number</span>
+<span class="param-type">string</span>
 
 
             
@@ -3953,7 +5989,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line159">line 159</a>
+        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line994">line 994</a>
     </li></ul></dd>
     
 
@@ -3990,8 +6026,6 @@
     <h4 class="name" id=".dismissAll"><span class="type-signature">(static) </span>dismissAll<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
-    
-    <p class="summary">Dismiss all visible notifications</p>
     
 
 
@@ -4051,7 +6085,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line185">line 185</a>
+        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line1015">line 1015</a>
     </li></ul></dd>
     
 
@@ -4088,8 +6122,6 @@
     <h4 class="name" id=".dismissType"><span class="type-signature">(static) </span>dismissType<span class="signature">(type)</span><span class="type-signature"></span></h4>
     
 
-    
-    <p class="summary">Dismiss typed notifications</p>
     
 
 
@@ -4198,7 +6230,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line211">line 211</a>
+        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line1036">line 1036</a>
     </li></ul></dd>
     
 
@@ -4235,8 +6267,6 @@
     <h4 class="name" id=".error"><span class="type-signature">(static) </span>error<span class="signature">(options)</span><span class="type-signature"> &rarr; {number}</span></h4>
     
 
-    
-    <p class="summary">Call a new error notification</p>
     
 
 
@@ -4345,7 +6375,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line238">line 238</a>
+        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line977">line 977</a>
     </li></ul></dd>
     
 
@@ -4404,8 +6434,6 @@
     <h4 class="name" id=".info"><span class="type-signature">(static) </span>info<span class="signature">(options)</span><span class="type-signature"> &rarr; {number}</span></h4>
     
 
-    
-    <p class="summary">Call a new info notification</p>
     
 
 
@@ -4514,7 +6542,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line261">line 261</a>
+        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line926">line 926</a>
     </li></ul></dd>
     
 
@@ -4573,8 +6601,6 @@
     <h4 class="name" id=".new"><span class="type-signature">(static) </span>new<span class="signature">(options)</span><span class="type-signature"> &rarr; {number}</span></h4>
     
 
-    
-    <p class="summary">Call a new notification</p>
     
 
 
@@ -5132,7 +7158,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line284">line 284</a>
+        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line748">line 748</a>
     </li></ul></dd>
     
 
@@ -5191,8 +7217,6 @@
     <h4 class="name" id=".success"><span class="type-signature">(static) </span>success<span class="signature">(options)</span><span class="type-signature"> &rarr; {number}</span></h4>
     
 
-    
-    <p class="summary">Call a new success notification</p>
     
 
 
@@ -5301,7 +7325,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line371">line 371</a>
+        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line943">line 943</a>
     </li></ul></dd>
     
 
@@ -5360,8 +7384,6 @@
     <h4 class="name" id=".warning"><span class="type-signature">(static) </span>warning<span class="signature">(options)</span><span class="type-signature"> &rarr; {number}</span></h4>
     
 
-    
-    <p class="summary">Call a new warning notification</p>
     
 
 
@@ -5470,7 +7492,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line394">line 394</a>
+        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line960">line 960</a>
     </li></ul></dd>
     
 
@@ -5542,7 +7564,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Tue Jun 19 2018 11:51:42 GMT+0200 (Romance Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Mar 04 2019 20:33:45 GMT+0100 (Central European Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

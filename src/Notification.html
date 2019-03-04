@@ -162,11 +162,11 @@
                 <h3>Going further:</h3>
                 <div class="row">
                     <div class="col-seven">
-                        <p class="paragraph">If you want to have a better understanding of the Notification class, without spending hours parsing the source code, you can access the <a href="#" target="_blank">JSDoc</a> documentation. Now that your are familliar with the Notification system, here are several other customization that you can do, using a little of your brain juice.</p>
+                        <p class="paragraph">If you want to have a better understanding of the Notification class, without spending hours parsing the source code, you can access the <a href="#" target="_blank">JSDoc</a> documentation. Now that your are familliar with the Notification system, here are several other customization that you can do :</p>
                         <p class="paragraph">If you are a developper that is familliar with compiled css, you can set your own notification special variables in the <code class="inline">notification.scss</code> file to obtain a fully personnalized notification system: margin, padding, icon size, border sizes and width.</p>
                         <p class="paragraph">If you intend to change the color values in the <code class="inline">notification.scss</code> file, beware to change them accordingly in the <code class="inline">Notification.js</code> constructor, in the <code class="inline">this._default</code> object since they are used on both file for different purpose.</p>
                         <p class="paragraph">Also, if you want to change the notification icons, it is a little less intuitive than just dropping a new icon in the img folder, but for the best. Notification.js uses vectors instead of rasterized images, for better performances. Furthermore, Notification.js doesn't uses any <code class="inline">.svg</code> file: svg path are inline coded in the <code class="inline">_buildUI()</code> method. To change it, open the <code class="inline">.svg</code> file you want to get the vector from, grab the <code class="inline">d</code> attribute content, in the <code class="inline">path</code> tag, and copy / paste it into the Javascript code. Path lines are the longer ones in the file, you can't miss them in the code...</p>
-                        <p class="paragraph">Finally, if you think that this class is clearly missing th point, feel free to contribute to this project by openning an issue or even better, by making a pull request! To do so, go check out the <a href="https://github.com/ArthurBeaulieu/Notification.js" target="_blank">GitHub</a> repository.</p>
+                        <p class="paragraph">Finally, feel free to contribute to this project by openning an issue or by making a pull request! Check out the <a href="https://github.com/ArthurBeaulieu/Notification.js" target="_blank">GitHub</a> repository.</p>
                     </div>
                 </div>
                 <hr>
@@ -175,28 +175,27 @@
         <script type="text/javascript" src="js/Notification.js"></script>
         <script type="text/javascript">
             window.notification = new Notification();
-
             document.getElementById('btn1').onclick = function() { window.notification.success({ message: 'Success notification' }); };
             document.getElementById('btn2').onclick = function() { window.notification.info({ message: 'Info notification' }); };
             document.getElementById('btn3').onclick = function() { window.notification.warning({ message: 'Warning notification' }); };
             document.getElementById('btn4').onclick = function() { window.notification.error({ message: 'Error notification' }); };
             document.getElementById('btn5').onclick = function() {
                 var options = {
-                   type:        document.getElementById('type').value,
-                   title:       document.getElementById('title').value.length > 0 ? document.getElementById('title').value : undefined,
-                   message:     document.getElementById('message').value,
-                   duration:    document.getElementById('duration').value.length > 0 ? document.getElementById('duration').value : undefined,
-                   iconless:    JSON.parse(document.getElementById('iconless').value),
+                   type: document.getElementById('type').value,
+                   title: document.getElementById('title').value.length > 0 ? document.getElementById('title').value : undefined,
+                   message: document.getElementById('message').value,
+                   duration: document.getElementById('duration').value.length > 0 ? document.getElementById('duration').value : undefined,
+                   iconless: JSON.parse(document.getElementById('iconless').value),
                    thickBorder: document.getElementById('thickBorder').value.length > 0 ? document.getElementById('thickBorder').value : undefined,
-                   closable:    JSON.parse(document.getElementById('closable').value),
-                   sticky:      JSON.parse(document.getElementById('sticky').value),
-                   renderTo:    (document.getElementById('renderTo').value === 'elsewhere' ? document.getElementById('renderme') : undefined),
-                   CBtitle:     document.getElementById('cbtitle').value.length > 0 ? document.getElementById('cbtitle').value : undefined,
-                   callback:    (document.getElementById('callback').checked ? function() {
+                   closable: JSON.parse(document.getElementById('closable').value),
+                   sticky: JSON.parse(document.getElementById('sticky').value),
+                   renderTo: (document.getElementById('renderTo').value === 'elsewhere' ? document.getElementById('renderme') : undefined),
+                   CBtitle: document.getElementById('cbtitle').value.length > 0 ? document.getElementById('cbtitle').value : undefined,
+                   callback: (document.getElementById('callback').checked ? function() {
                        alert('Called from my notification');
                    } : undefined)
                 };
-
+                
                 if (options.message.length === 0) {
                     notification.error({ message: 'You didn\'t gave the to the playground a type and/or a title.', renderTo: document.getElementById('renderme') });
                 } else {

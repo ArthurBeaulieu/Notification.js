@@ -42,134 +42,149 @@
 
 
 
+    <section>
+        <article><h1>Notification.js</h1><p>Notification.js is a standalone JavaScript class that allows you to easily handle several notifications from different types at the same time. It is meant to be used with the KISS spirit in mind. Notification.js features a lot of options so you can customize it, to fit your needs.</p>
+<p><a href="https://github.com/ArthurBeaulieu/Notification.js"><img src="https://badge.fury.io/gh/boennemann%2Fbadges.svg" alt="GitHub version"></a> <a href="https://github.com/ArthurBeaulieu/Notification.js"><img src="https://badges.frapsoft.com/os/gpl/gpl.svg?v=102" alt="Open Source Love"></a></p>
+<hr>
+<h2>Get started</h2><p>Notification.js handles four different types of notifications: Success, Info, Warning and Error.</p>
+<p>The first step for you to get started with Notification.js is to copy both the <code>dist/Notification.min.js</code> and <code>dist/notification.min.css</code> files in your code base. You are free to organize those file the way you want. Note that if you want to tweak the code, preferably use the files located in the <code>src</code> directory. Once pasted, don't forget to include the style and the script in your HTML page. You are now good to go!</p>
+<h4>Basic usage</h4><p>To make Notification.js work, you must call for a new notification handler. It will handle all new notifications coming to the stack, with their specificities. Attach this handler to the window object, so you can access it from anywhere in your webapp:</p>
+<pre class="prettyprint source lang-javascript"><code>window.notification = new Notification();</code></pre><p>Now that the handler is set, you can call for new notifications anywhere, at anytime using the following lines:</p>
+<pre class="prettyprint source lang-javascript"><code>window.notification.success({ message: 'Great success!' });
+window.notification.info({ message: 'Much info, very text' });
+window.notification.warning({ message: 'Snake?' });
+window.notification.error({ message: 'Snaaaaaaaake!' });</code></pre><p>The message string passed is <strong>mandatory</strong>. Forget to pass it and you will raise an error in the console.</p>
+<hr>
+<h4>Advanced usage</h4><p>You can pass an options object when creating a new notificafion handler:</p>
+<pre class="prettyprint source lang-javascript"><code>window.notification = new notification({
+    position: 'top-left',
+    thickBorder: 'bottom',
+    duration: 2000,
+    transition: 100,
+    maxActive: 5
+});</code></pre><p>The handler is now ready with your custom settings. To call for a new notification, you can still use the typed methods <code>.success()</code>, <code>.info()</code>, <code>.warning()</code> and <code>.error()</code> from <strong>Basic Usage</strong>, but you can also call for the <code>.new()</code> notification method:</p>
+<pre class="prettyprint source lang-JavaScript"><code>let id = window.notification.new({
+   type: 'info',
+   title: 'My test notification',
+   message: 'My test message.',
+   thickBorder: 'top'
+   iconless: false,
+   closable: true,
+   sticky: true,
+   renderTo: document.body,
+   CBtitle: 'My callback',
+   callback: function() {
+     alert('Called from My test notification');
+   }
+});</code></pre><p>The only difference with the typed methods is that using <code>.new()</code> method, you must give it a type beside giving it a message: those are the two required options to create a standard notification. You can also pass this options object to the typed methods.</p>
+<p>As for the typed methods, the <code>new()</code> method return the notification ID, in case you want some manual control over your notifications, this is why we store it in the <code>id</code> variable. Using this ID, you can dismiss a specific notification like this:</p>
+<pre class="prettyprint source lang-JavaScript"><code>window.notification.dismiss(id);</code></pre><p>Also you can dismiss all notification:</p>
+<pre class="prettyprint source lang-JavaScript"><code>window.notification.dismissAll();</code></pre><p>Finaly, the handler keeps all notifications in an history object, so you can get a timeline of feedbacks received by the user during its session:</p>
+<pre class="prettyprint source lang-javascript"><code>let historyLength = window.notification.getHistoryLength();
+let history = window.notification.getHistory();</code></pre><h4>Further reading</h4><p>In the <code>doc</code> folder, there is a JSDoc that has been generated from the JavaScript class. It is highly detailled, so we recommend you to read this documentation if you want to enhance or modify the class itself. There are some example in the <code>src/Notification.html</code> and a sand box so you can try the system and watch all possibilities given by the passed options.</p>
+<h2>Notification options</h2><h4>Handler settings</h4><table>
+<thead>
+<tr>
+<th style="text-align:right">Option</th>
+<th style="text-align:left">Default</th>
+<th>Values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right"><code>position</code></td>
+<td style="text-align:left"><code>top-right</code></td>
+<td><code>top-left</code>, <code>top-right</code>, <code>bottom-left</code>, <code>bottom-right</code></td>
+</tr>
+<tr>
+<td style="text-align:right"><code>thickBorder</code></td>
+<td style="text-align:left"><code>top</code></td>
+<td><code>left</code>, <code>right</code>, <code>top</code>, <code>bottom</code>, <code>none</code></td>
+</tr>
+<tr>
+<td style="text-align:right"><code>duration</code></td>
+<td style="text-align:left"><code>5000 ms</code></td>
+<td>Positive integer</td>
+</tr>
+<tr>
+<td style="text-align:right"><code>transition</code></td>
+<td style="text-align:left"><code>200 ms</code></td>
+<td>Positive integer, not greater than half duration</td>
+</tr>
+<tr>
+<td style="text-align:right"><code>maxActive</code></td>
+<td style="text-align:left"><code>5</code></td>
+<td>Positive integer</td>
+</tr>
+</tbody>
+</table>
+<h4>Notification settings</h4><table>
+<thead>
+<tr>
+<th style="text-align:right">Option</th>
+<th style="text-align:left">Default</th>
+<th>Values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right"><code>type</code></td>
+<td style="text-align:left"><code>info</code></td>
+<td><code>success</code>, <code>info</code>, <code>warning</code>, <code>error</code></td>
+</tr>
+<tr>
+<td style="text-align:right"><code>title</code></td>
+<td style="text-align:left"><code>''</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td style="text-align:right"><code>message</code></td>
+<td style="text-align:left"><code>''</code></td>
+<td>String with a length greater than 0</td>
+</tr>
+<tr>
+<td style="text-align:right"><code>thickBorder</code></td>
+<td style="text-align:left">Handler value</td>
+<td><code>left</code>, <code>right</code>, <code>top</code>, <code>bottom</code>, <code>none</code></td>
+</tr>
+<tr>
+<td style="text-align:right"><code>iconless</code></td>
+<td style="text-align:left"><code>false</code></td>
+<td><code>true</code>, <code>false</code></td>
+</tr>
+<tr>
+<td style="text-align:right"><code>closable</code></td>
+<td style="text-align:left"><code>true</code></td>
+<td><code>true</code>, <code>false</code></td>
+</tr>
+<tr>
+<td style="text-align:right"><code>sticky</code></td>
+<td style="text-align:left"><code>false</code></td>
+<td><code>true</code>, <code>false</code></td>
+</tr>
+<tr>
+<td style="text-align:right"><code>renderTo</code></td>
+<td style="text-align:left">Handler container</td>
+<td>DOM Object</td>
+</tr>
+<tr>
+<td style="text-align:right"><code>CBtitle</code></td>
+<td style="text-align:left"><code>''</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td style="text-align:right"><code>callback</code></td>
+<td style="text-align:left"><code>null</code></td>
+<td>JavaScript function</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2>Contribute</h2><p>If you want to contribute in any way, please open an issue with your suggestions or even better, make a pull request! I am aware that this class is far from perfect so feel free to help out to make this great again!</p>
+<h4>Contributors</h4><p>Arthur Beaulieu - June 2018</p></article>
+    </section>
 
 
-
-
-
-
-
-
-<section>
-
-<header>
-    
-        <h2>src/js/Notification.js</h2>
-        
-            <div class="class-description">Notification.js is part of the MessCss web framework. It can both work stand alone and in MessCss. The class itself is pretty easy to use and can be set up in a minute, but also gives the possibility to tweak it a lot, using options. -- KISS (Keep It Simple, Stupid!)<br><br>There are four different types of notifications to give your users different feedbacks: Succes, Info, Warning and Error. These are highly customizable using options object. Also, the CSS style is made in <code>SCSS</code>, so you can tweak the variable to make this class perfectly fit your needs.</div>
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-            <div class="description">Notification.js</div>
-        
-
-        
-
-
-<dl class="details">
-
-    
-    <dt class="tag-version">Version:</dt>
-    <dd class="tag-version"><ul class="dummy"><li>1.0</li></ul></dd>
-    
-
-    
-    <dt class="tag-since">Since:</dt>
-    <dd class="tag-since"><ul class="dummy"><li>June 2018</li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-author">Author:</dt>
-    <dd class="tag-author">
-        <ul>
-            <li>Arthur Beaulieu</li>
-        </ul>
-    </dd>
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Notification.js.html">Notification.js</a>, <a href="Notification.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-        
-            <h3>Examples</h3>
-            
-        <p class="code-caption"><hr><br><h2>Notification handler</h2>The easiest way to implement this class is to attach an instance to the window DOM object (1), so you can access it from anywhere in your app.<br>Optionnaly, you can pass an options object to tune the handler behavior (2).<br><b>Warning</b>: transition time must not exceed half the duration (for obvious, logical questions), otherwise, it will be resetted to the default value.</p>
-    
-    <pre class="prettyprint"><code>// (1) - Default options (see class documentation)window.notification = new Notification();// (2) - Custom notification handlerwindow.notification = new Notification({   position:    'top-right', // Notification handler position in viewpoint // TODO add top-center, bottom center   thickBorder: 'top',      // Global notification thick border location   duration:    5000,        // Total duration of a notification on screen in milliseconds   transition:  200,         // Fade in and out transition duration in milliseconds   maxActive:   10            // The max number of simultaneously opened notification});</code></pre>
-
-        <p class="code-caption"><hr><br><h2>Notification type</h2>Once attached to the DOM, add a notification from anywhere in your app logic (3).<br>You can also call a new typed notification (4) if you find it more suitable for your need.<br><b>Note</b>: <code>type</code> and <code>message</code> are the only mandatory options (no need to put type when using example (3), since they are already typed).<br>Also, storing the notification ID is only useful if you intend to manually dismiss the notification later on.</p>
-    
-    <pre class="prettyprint"><code>// (3) - Simple notification type abstractionlet ids = window.notification.success({ message: 'Great success!' });let idi = window.notification.info({ message: 'Much info, very text' });let idw = window.notification.warning({ message: 'Snake?' });let ide = window.notification.error({ message: 'Snaaaaaaaake!' });// (4) - Custom notification construction with all possible parameterslet id = window.notification.new({   type:        'info',                         // Mandatory, Notification type   title:       'My test notification',         // Notification head title   message:     'Lorem ipsum dolor sit amet.',  // Mandatory, Notification message	  duration:    5000,						   // Notification duration	  iconless:    false,						   // Icon in the notification   thickBorder: 'top'                           // Local notification thick border location   closable:    true,                           // Ability for user to close notification   sticky:      false,                           // Notification will dim instead of close   renderTo:    document.body,                  // Render the notification anywhere you want   CBtitle:     'My callback',                  // Callback button text   callback:    function() {                    // Callback function       alert('Called from my notification');   }});</code></pre>
-
-        <p class="code-caption"><hr><br><h2>Archived notifications</h2>When a notification reaches the end of its lifecycle and disapear, it is still store sorted in an history array.<br>In this array, you have access to all notification in a chronological order (index 0 is the oldest), their attributes and their timestamps (creation, deletion, duration on screen).</p>
-    
-    <pre class="prettyprint"><code>let historyLength = window.notification.getHistoryLength(); // Returns the number of archived notificationslet history       = window.notification.getHistory();       // Returns a sorted array of archived notification</code></pre>
-
-        <p class="code-caption"><hr><br><h2>Notification manual destruction</h2>Finally, you can manually dismiss a notification using its ID or dismill them all:</p>
-    
-    <pre class="prettyprint"><code>window.notification.dismiss(id);window.notification.dismissAll();</code></pre>
-
-        
-    
-    </div>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
 
 
 
@@ -183,7 +198,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Tue Jun 19 2018 11:51:42 GMT+0200 (Romance Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Mar 04 2019 20:33:45 GMT+0100 (Central European Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

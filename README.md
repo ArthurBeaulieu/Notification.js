@@ -31,6 +31,8 @@ window.notification.error({ message: 'Snaaaaaaaake!' });
 
 The message string passed is **mandatory**. Forget to pass it and you will raise an error in the console.
 
+---
+
 #### Advanced usage
 
 You can pass an options object when creating a new notificafion handler:
@@ -87,8 +89,6 @@ let history = window.notification.getHistory();
 #### Further reading
 
 In the `doc` folder, there is a JSDoc that has been generated from the JavaScript class. It is highly detailled, so we recommend you to read this documentation if you want to enhance or modify the class itself. There are some example in the `src/Notification.html` and a sand box so you can try the system and watch all possibilities given by the passed options.
-
----
 
 ## Notification options
 
