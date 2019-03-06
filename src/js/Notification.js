@@ -58,6 +58,9 @@ class Notification {
     /** @private
      * @member {number} - The maximum amount of active Notification */
     this._maxActive = 0;
+    /** @private
+     * @member {number} - The path where svg images can be found */
+    this._imgPath = '';    
     // Build singleton and attach
     this._init(options);
     this._attach();
@@ -99,7 +102,8 @@ class Notification {
         thickBorder: 'top',
         duration: 5000,
         transition: 200,
-        maxActive: 10
+        maxActive: 10,
+        imgPath: './img/'
       },
       notification: {
         type: 'info',
@@ -110,7 +114,8 @@ class Notification {
         sticky: false,
         renderTo: this._dom,
         CBtitle: '',
-        callback: null
+        callback: null,
+        isDimmed: false
       },
       color: {
         success: 'rgb(76, 175, 80)',
@@ -126,6 +131,7 @@ class Notification {
     this._duration = options.duration;
     this._transition = options.transition;
     this._maxActive = options.maxActive;
+    this._imgPath = options.imgPath;
     this._setAttributesDefault();
     // Add position CSS class only after this._position is sure to be a valid value
     this._dom.classList.add(this._position);
@@ -156,13 +162,17 @@ class Notification {
       options.duration = this._default.handler.duration;
     }
 
-    if (options.transition) {
+    if (options.transition === undefined) {
       options.transition = this._default.handler.transition;
     }
 
-    if (options.maxActive) {
+    if (options.maxActive === undefined) {
       options.maxActive = this._default.handler.maxActive;
     }
+
+    if (options.imgPath === undefined) {
+      options.imgPath = this._default.handler.imgPath;
+    }    
   }
 
 
@@ -203,7 +213,6 @@ class Notification {
     if (typeof this._maxActive !== 'number' || this._maxActive <= 0) { // Illegal value for maxActive
       this._maxActive = this._default.handler.maxActive; // Default value for _maxActive
     }
-
   }
 
 
@@ -412,14 +421,14 @@ class Notification {
         notification.dom.classList.add(notification.type);
 
       if (!notification.iconless) {
-        notification.dom.icon.src = `./img/${notification.type}.svg`;
+        notification.dom.icon.src = `${this._imgPath}${notification.type}.svg`;
       }
 
     } else {
       notification.dom.classList.add('info');
 
       if (!notification.iconless) {
-        notification.dom.icon.src = './img/info.svg';
+        notification.dom.icon.src = `${this._imgPath}info.svg`;
       }
     }
   }
@@ -669,7 +678,7 @@ class Notification {
    * @param {number} notification.timeoutID - Notification own setTimeout ID
    **/
   _resetTimeout(notification) {
-    window.clearTimeout(notification.timeoutID); // Clear previpous life cycle
+    window.clearTimeout(notification.timeoutID); // Clear previous life cycle
     notification.timeoutID = window.setTimeout(() => {
       this._checkCounter(notification); // Check notification request count to act accordingly
     }, notification.duration); // Use Notification master duration
@@ -769,6 +778,7 @@ class Notification {
    **/
   new(options) {
     if (this._checkOptionsValidity(options) === false) {
+      console.error('Notification.js : new() options argument object is invalid.');
       return -1;
     }
 
@@ -787,7 +797,7 @@ class Notification {
       renderTo: options.renderTo,
       CBtitle: options.CBtitle,
       callback: options.callback,
-      isDimmed: false // Only usefull if sticky is set to true
+      isDimmed: options.isDimmed // Only usefull if sticky is set to true
     });
 
     // Create a new notification in the container: No notification with the same ID is already open
@@ -886,6 +896,10 @@ class Notification {
     if (options.callback === undefined) {
       options.callback = this._default.notification.callback;
     }
+
+    if (options.isDimmed === undefined) {
+      options.isDimmed = this._default.notification.isDimmed;
+    }    
   }
 
 
@@ -935,8 +949,12 @@ class Notification {
    * @returns {number} The newly created notification ID
    **/
   info(options) {
-    options.type = 'info';
-    return this.new(options);
+    if (options) {
+      options.type = 'info';
+      return this.new(options);
+    } else {
+      console.error('Notification.js : No arguments provided for info() method.');
+    }    
   }
 
 
@@ -952,8 +970,12 @@ class Notification {
    * @returns {number} The newly created notification ID
    **/
   success(options) {
-    options.type = 'success';
-    return this.new(options);
+    if (options) {
+      options.type = 'success';
+      return this.new(options);
+    } else {
+      console.error('Notification.js : No arguments provided for success() method.');
+    }
   }
 
 
@@ -969,8 +991,12 @@ class Notification {
    * @returns {number} The newly created notification ID
    **/
   warning(options) {
-    options.type = 'warning';
-    return this.new(options);
+    if (options) {
+      options.type = 'warning';
+      return this.new(options);
+    } else {
+      console.error('Notification.js : No arguments provided for warning() method.');
+    }    
   }
 
 
@@ -986,8 +1012,12 @@ class Notification {
    * @returns {number} The newly created notification ID
    **/
   error(options) {
-    options.type = 'error';
-    return this.new(options);
+    if (options) {
+      options.type = 'error';
+      return this.new(options);
+    } else {
+      console.error('Notification.js : No arguments provided for error() method.');
+    }    
   }
 
 
@@ -1052,7 +1082,23 @@ class Notification {
       }
     }
   }
+
+
+  /**
+   * @method
+   * @name destroy
+   * @public
+   * @memberof Notification
+   * @author Arthur Beaulieu
+   * @since March 2019
+   * @description Destroy the singleton and detach it from the DOM
+   **/
+  destroy() {
+    Notification.instance = null;
+    document.body.removeChild(this._dom);
+    delete this;
+  }
 }
 
 
-//export default Notification; // Uncomment if you import this file as a module
+export default Notification;
