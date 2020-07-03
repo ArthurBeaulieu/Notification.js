@@ -10,8 +10,7 @@
 class Notification {
 
 
-  /**
-   * @summary Create an instance of a notification handler
+  /** @summary Create an instance of a notification handler
    * @author Arthur Beaulieu
    * @since March 2019
    * @description Build the notification singleton handler that will handle all incoming Notifications
@@ -20,8 +19,7 @@ class Notification {
    * @param {string} [options.thickBorder=top] - <i>top; bottom; left; right; none;</i>
    * @param {number} [options.duration=3000] - Notification life cycle duration (in ms) in range N*
    * @param {number} [options.transition=100] - Notification fade animation transition timing (in ms) in range N*
-   * @param {number} [options.maxActive=5] - Maximum of simultaneously opened notification in range N*
-   **/
+   * @param {number} [options.maxActive=5] - Maximum of simultaneously opened notification in range N* */
   constructor(options) {
     if (!!Notification.instance) { // GoF Singleton
       return Notification.instance;
@@ -41,7 +39,7 @@ class Notification {
      * @member {object} - Queue notifications when max active has been reached */
     this._queue = {};
     /** @private
-     * @member {objecy} - Notification handler default values */
+     * @member {object} - Notification handler default values */
     this._default = {};
     /** @private
      * @member {string} - The handler position in viewport - <i>top-left; top-right; bottom-left; bottom-right;</i> */
@@ -60,7 +58,10 @@ class Notification {
     this._maxActive = 0;
     /** @private
      * @member {number} - The path where svg images can be found */
-    this._imgPath = '';    
+    this._imgPath = '';
+    /** @public
+     * @member {number} - The component version */
+    this.version = '1.1.0';
     // Build singleton and attach
     this._init(options);
     this._attach();
@@ -72,8 +73,7 @@ class Notification {
   //  --------------------------------  PRIVATE METHODS  --------------------------------  //
 
 
-  /**
-   * @method
+  /** @method
    * @name _init
    * @private
    * @memberof Notification
@@ -85,8 +85,7 @@ class Notification {
    * @param {string} [options.thickBorder=top] - <i>top; bottom; left; right; none;</i>
    * @param {number} [options.duration=3000] - Notification life cycle duration (in ms) in range N*
    * @param {number} [options.transition=100]  - Notification fade animation transition timing (in ms) in range N*
-   * @param {number} [options.maxActive=5] - Maximum of simultaneously opened notification in range N*
-   **/
+   * @param {number} [options.maxActive=5] - Maximum of simultaneously opened notification in range N* */
   _init(options) {
     // Declare options as object if empty
     if (options === undefined) {
@@ -138,8 +137,7 @@ class Notification {
   }
 
 
-  /**
-   * @method
+  /** @method
    * @name _setOptionsDefault
    * @private
    * @memberof Notification
@@ -147,8 +145,7 @@ class Notification {
    * @author Arthur Beaulieu
    * @since March 2019
    * @description Build the notification singleton according to the user options
-   * @param {object} options - The singleton options to set
-   **/
+   * @param {object} options - The singleton options to set */
   _setOptionsDefault(options) {
     if (options.position === undefined) {
       options.position = this._default.handler.position;
@@ -176,16 +173,14 @@ class Notification {
   }
 
 
-  /**
-   * @method
+  /** @method
    * @name _setAttributesDefault
    * @private
    * @memberof Notification
    * @summary Check the notification singleton options validity
    * @author Arthur Beaulieu
    * @since March 2019
-   * @description Fallback on default attributes value if the notification singleton options are invalid
-   **/
+   * @description Fallback on default attributes value if the notification singleton options are invalid */
   _setAttributesDefault() {
     if (this._position !== 'top-left' && /* Illegal value for position */
         this._position !== 'top-right' &&
@@ -216,15 +211,13 @@ class Notification {
   }
 
 
-  /**
-   * @method
+  /** @method
    * @name _attach
    * @private
    * @memberof Notification
    * @author Arthur Beaulieu
    * @since July 2018
-   * @description Attach the notification handler to the dom using a fragment
-   **/
+   * @description Attach the notification handler to the dom using a fragment */
   _attach() {
     const fragment = document.createDocumentFragment();
     fragment.appendChild(this._dom);
@@ -232,8 +225,7 @@ class Notification {
   }
 
 
-  /**
-   * @method
+  /** @method
    * @name _events
    * @private
    * @memberof Notification
@@ -246,8 +238,7 @@ class Notification {
    * @param {number} notification.requestCount - Notification inner call counter
    * @param {number} notification.timeoutID - Notification own setTimeout ID
    * @param {boolean} notification.sticky - Notification sticky behvaior
-   * @param {boolean} notification.closable - Make notification closable flag
-   **/
+   * @param {boolean} notification.closable - Make notification closable flag */
   _events(notification) {
     let closeFired = false; // Close fired flag
 
@@ -302,8 +293,7 @@ class Notification {
   }
 
 
-  /**
-   * @method
+  /** @method
    * @name _buildUI
    * @private
    * @memberof Notification
@@ -321,8 +311,7 @@ class Notification {
    * @param {boolean} notification.sticky - Make notification sticky flag
    * @param {string} notification.CBtitle - Notification callback title
    * @param {function} notification.callback - Notification callback button
-   * @returns {object} Enhanced and ready notification object
-   **/
+   * @returns {object} Enhanced and ready notification object */
   _buildUI(notification) {
     notification.requestCount = 1;
     notification.totalRequestCount = 1;
@@ -360,8 +349,7 @@ class Notification {
   }
 
 
-  /**
-   * @method
+  /** @method
    * @name _buildUIDom
    * @private
    * @memberof Notification
@@ -369,8 +357,7 @@ class Notification {
    * @author Arthur Beaulieu
    * @since March 2019
    * @description Build all the Notification internal structure
-   * @param {object} notification - The notification to create
-   **/
+   * @param {object} notification - The notification to create */
   _buildUIDom(notification) {
     // Create notification DOM elements
     notification.dom = document.createElement('DIV');
@@ -401,8 +388,7 @@ class Notification {
   }
 
 
-  /**
-   * @method
+  /** @method
    * @name _buildNotificationType
    * @private
    * @memberof Notification
@@ -410,8 +396,7 @@ class Notification {
    * @author Arthur Beaulieu
    * @since March 2019
    * @description Fills the Notification icon and class according to its inner type
-   * @param {object} notification - The notification to fill
-   **/
+   * @param {object} notification - The notification to fill */
   _buildNotificationType(notification) {
     // Type specification (title, icon, color)
     if (notification.type === 'success' ||
@@ -434,8 +419,7 @@ class Notification {
   }
 
 
-  /**
-   * @method
+  /** @method
    * @name _start
    * @private
    * @memberof Notification
@@ -443,8 +427,7 @@ class Notification {
    * @since June 2018
    * @description Call this method to add the new notification to the DOM container, and launch its life cycle
    * @param {object} notification - The notification object
-   * @param {number} notification.id - Notification personnal ID
-   **/
+   * @param {number} notification.id - Notification own ID */
   _start(notification) {
     if (Object.keys(this._active).length >= this._maxActive) {
       this._queue[notification.id] = notification;
@@ -461,8 +444,7 @@ class Notification {
   }
 
 
-  /**
-   * @method
+  /** @method
    * @name _open
    * @private
    * @memberof Notification
@@ -471,8 +453,7 @@ class Notification {
    * @description Open and add the notification to the container
    * @param {{id: number}} notification - The notification object
    * @param {number} notification.id - Notification personnal ID
-   * @param {object} notification.dom - Notifiction DOM element
-   **/
+   * @param {object} notification.dom - Notifiction DOM element */
   _open(notification) {
     // Reverse insertion when notifications are on bottom
     if (this._position === 'bottom-right' || this._position === 'bottom-left') {
@@ -488,8 +469,7 @@ class Notification {
   }
 
 
-  /**
-   * @method
+  /** @method
    * @name _close
    * @private
    * @memberof Notification
@@ -500,8 +480,7 @@ class Notification {
    * @param {number} notification.id - Notification personnal ID
    * @param {boolean} notification.isClosing - Already closing flag
    * @param {object} notification.dom - Notifiction DOM element
-   * @param {object} notification.renderTo - DOM object to render the notification in
-   **/
+   * @param {object} notification.renderTo - DOM object to render the notification in */
   _close(notification) {
     if (notification.isClosing) { // Avoid double close on a notification (in case dismiss/dismissAll is triggerred when notification is already closing)
       return;
@@ -525,8 +504,7 @@ class Notification {
   }
 
 
-  /**
-   * @method
+  /** @method
    * @name _incrementRequestCounter
    * @private
    * @memberof Notification
@@ -538,8 +516,7 @@ class Notification {
    * @param {number} notification.requestCount - Notification inner call counter
    * @param {object} notification.dom - Notifiction DOM element
    * @param {boolean} notification.sticky - Notification sticky behvaior
-   * @param {boolean} notification.isDimmed - Notification dimmed status (only useful if notification.sticky is true)
-   **/
+   * @param {boolean} notification.isDimmed - Notification dimmed status (only useful if notification.sticky is true) */
   _incrementRequestCounter(notification) {
     ++notification.requestCount; // Increment notification.requestCount
 
@@ -570,8 +547,7 @@ class Notification {
   }
 
 
-  /**
-   * @method
+  /** @method
    * @name _decrementRequestCounter
    * @private
    * @memberof Notification
@@ -584,8 +560,7 @@ class Notification {
    * @param {boolean} notification.isDimmed - Notification dimmed status (only useful if notification.sticky is true)
    * @param {number} notification.requestCount - Notification inner call counter
    * @param {object} notification.dom - Notification DOM element
-   * @param {boolean} force - To force the notification.requestCount decrementation
-   **/
+   * @param {boolean} force - To force the notification.requestCount decrementation */
   _decrementRequestCounter(notification, force) {
     if (notification.sticky && !force) {
       if (!notification.isDimmed) {
@@ -611,8 +586,7 @@ class Notification {
   }
 
 
-  /**
-   * @method
+  /** @method
    * @name _checkCounter
    * @private
    * @memberof Notification
@@ -624,8 +598,7 @@ class Notification {
    * @param {number} notification.requestCount - Notification inner call counter
    * @param {object} notification.dom - Notifiction DOM element
    * @param {number} notification.timeoutID - Notification own setTimeout ID
-   * @param {boolean} notification.sticky - Notification sticky behvaior
-   **/
+   * @param {boolean} notification.sticky - Notification sticky behvaior */
   _checkCounter(notification) {
     // This notification as still more than one cycle to live
     if (notification.requestCount > 1) {
@@ -646,8 +619,7 @@ class Notification {
   }
 
 
-  /**
-   * @method
+  /** @method
    * @name _clearRequestCount
    * @private
    * @memberof Notification
@@ -656,8 +628,7 @@ class Notification {
    * @description Method that clear every pending request
    * @param {object} notification - The notification object
    * @param {number} notification.id - Notification personnal ID
-   * @param {object} notification.dom - Notifiction DOM element
-   **/
+   * @param {object} notification.dom - Notifiction DOM element */
   _clearRequestCount(notification) {
     notification.requestCount = 1;
     notification.dom.removeChild(notification.dom.counter);
@@ -665,8 +636,7 @@ class Notification {
   }
 
 
-  /**
-   * @method
+  /** @method
    * @name _resetTimeout
    * @private
    * @memberof Notification
@@ -675,8 +645,7 @@ class Notification {
    * @description Use this to reset a notification life cycle, and delay its close event
    * @param {{id: number}|{id: number, dom: Object, requestCount: number, timeoutID: number, sticky: boolean, closable: boolean}} notification - The notification object
    * @param {number} notification.id - Notification personnal ID
-   * @param {number} notification.timeoutID - Notification own setTimeout ID
-   **/
+   * @param {number} notification.timeoutID - Notification own setTimeout ID */
   _resetTimeout(notification) {
     window.clearTimeout(notification.timeoutID); // Clear previous life cycle
     notification.timeoutID = window.setTimeout(() => {
@@ -685,8 +654,7 @@ class Notification {
   }
 
 
-  /**
-   * @method
+  /** @method
    * @name _dim
    * @private
    * @memberof Notification
@@ -697,8 +665,7 @@ class Notification {
    * @param {number} notification.id - Notification personnal ID
    * @param {object} notification.dom - Notifiction DOM element
    * @param {boolean} notification.sticky - Notification sticky behvaior
-   * @param {boolean} notification.isDimmed - Notification dimmed status (only useful if notification.sticky is true)
-   **/
+   * @param {boolean} notification.isDimmed - Notification dimmed status (only useful if notification.sticky is true) */
   _dim(notification) {
     const that = this;
     let i = 100;
@@ -719,8 +686,7 @@ class Notification {
   }
 
 
-  /**
-   * @method
+  /** @method
    * @name _unDim
    * @private
    * @memberof Notification
@@ -730,8 +696,7 @@ class Notification {
    * @param {object} notification - The notification object
    * @param {number} notification.id - Notification personnal ID
    * @param {object} notification.dom - Notifiction DOM element
-   * @param {boolean} notification.isDimmed - Notification dimmed status (only useful if notification.sticky is true)
-   **/
+   * @param {boolean} notification.isDimmed - Notification dimmed status (only useful if notification.sticky is true) */
   _unDim(notification) {
     const that = this;
     let i = 50;
@@ -754,8 +719,7 @@ class Notification {
   //  --------------------------------  PUBLIC METHODS  ---------------------------------  //
 
 
-  /**
-   * @method
+  /** @method
    * @name new
    * @public
    * @memberof Notification
@@ -774,8 +738,7 @@ class Notification {
    * @param {object} [options.renderTo=handler] - Dom object to render the notification in
    * @param {string} [options.CBtitle=Callback] - Notification callback title
    * @param {function} [options.callback=undefined] - Notification callback button
-   * @returns {number} The newly created notification ID
-   **/
+   * @returns {number} The newly created notification ID */
   new(options) {
     if (this._checkOptionsValidity(options) === false) {
       console.error('Notification.js : new() options argument object is invalid.');
@@ -816,8 +779,7 @@ class Notification {
   }
 
 
-  /**
-   * @method
+  /** @method
    * @name _checkOptionsValidity
    * @private
    * @memberof Notification
@@ -825,8 +787,7 @@ class Notification {
    * @author Arthur Beaulieu
    * @since March 2019
    * @description Check a Notification options object against the required parameters.
-   * @param {object} options - The notification options to check validity
-   **/
+   * @param {object} options - The notification options to check validity */
   _checkOptionsValidity(options) {
     // Check for mandatory arguments existence
     if (options === undefined || options.type === undefined || (options.message === undefined || options.message === '')) {
@@ -849,8 +810,7 @@ class Notification {
   }
 
 
-  /**
-   * @method
+  /** @method
    * @name _setOptionsFallback
    * @private
    * @memberof Notification
@@ -858,8 +818,7 @@ class Notification {
    * @author Arthur Beaulieu
    * @since March 2019
    * @description Check a Notification options object and fill it with default value in case they are empty.
-   * @param {object} options - The notification options to fill with default value if empty
-   **/
+   * @param {object} options - The notification options to fill with default value if empty */
   _setOptionsFallback(options) {
     if (options.title === undefined) {
       options.title = this._default.notification.title;
@@ -903,20 +862,16 @@ class Notification {
   }
 
 
-  /**
-     * @method
-     * @name _idGenerator
-     * @private
-     * @memberof Notification
-     *
-     * @summary Generate an ID
-     * @author Arthur Beaulieu
-     * @since June 2018
-     * @description Hash the seed to generate an ID
-     *
-     * @param {string} seed   - The seed string to hash
-     * @param {number} length - The length of the returned ID
-     **/
+  /** @method
+   * @name _idGenerator
+   * @private
+   * @memberof Notification
+   * @summary Generate an ID
+   * @author Arthur Beaulieu
+   * @since June 2018
+   * @description Hash the seed to generate an ID
+   * @param {string} seed   - The seed string to hash
+   * @param {number} length - The length of the returned ID */
   _idGenerator(seed, length) {
     /* Original code from:
      * http://werxltd.com/wp/2010/05/13/javascript-implementation-of-javas-string-hashcode-method/
@@ -937,8 +892,7 @@ class Notification {
   }
 
 
-  /**
-   * @method
+  /** @method
    * @name info
    * @public
    * @memberof Notification
@@ -946,8 +900,7 @@ class Notification {
    * @since June 2018
    * @description Build an info notification
    * @param {object} options - The notification options object (see new() arguments since this is an abstraction of new())
-   * @returns {number} The newly created notification ID
-   **/
+   * @returns {number} The newly created notification ID */
   info(options) {
     if (options) {
       options.type = 'info';
@@ -958,8 +911,7 @@ class Notification {
   }
 
 
-  /**
-   * @method
+  /** @method
    * @name success
    * @public
    * @memberof Notification
@@ -967,8 +919,7 @@ class Notification {
    * @since June 2018
    * @description Build a success notification
    * @param {object} options - The notification options object (see new() arguments since this is an abstraction of new())
-   * @returns {number} The newly created notification ID
-   **/
+   * @returns {number} The newly created notification ID */
   success(options) {
     if (options) {
       options.type = 'success';
@@ -979,8 +930,7 @@ class Notification {
   }
 
 
-  /**
-   * @method
+  /** @method
    * @name warning
    * @public
    * @memberof Notification
@@ -988,8 +938,7 @@ class Notification {
    * @since June 2018
    * @description Build a warning notification
    * @param {object} options - The notification options object (see new() arguments since this is an abstraction of new())
-   * @returns {number} The newly created notification ID
-   **/
+   * @returns {number} The newly created notification ID */
   warning(options) {
     if (options) {
       options.type = 'warning';
@@ -1000,8 +949,7 @@ class Notification {
   }
 
 
-  /**
-   * @method
+  /** @method
    * @name error
    * @public
    * @memberof Notification
@@ -1009,8 +957,7 @@ class Notification {
    * @since June 2018
    * @description Build an error notification
    * @param {object} options - The notification options object (see new() arguments since this is an abstraction of new())
-   * @returns {number} The newly created notification ID
-   **/
+   * @returns {number} The newly created notification ID */
   error(options) {
     if (options) {
       options.type = 'error';
@@ -1021,16 +968,14 @@ class Notification {
   }
 
 
-  /**
-   * @method
+  /** @method
    * @name dismiss
    * @public
    * @memberof Notification
    * @author Arthur Beaulieu
    * @since June 2018
    * @description Dismiss a specific notification via its ID
-   * @param {string} id - The notification ID to dismiss
-   **/
+   * @param {string} id - The notification ID to dismiss */
   dismiss(id) {
     window.clearTimeout(this._active[id].timeoutID); // Clear notification timeout
 
@@ -1042,15 +987,13 @@ class Notification {
   }
 
 
-  /**
-   * @method
+  /** @method
    * @name dismissAll
    * @public
    * @memberof Notification
    * @author Arthur Beaulieu
    * @since June 2018
-   * @description Clear the notification handler from all its active notifications
-   **/
+   * @description Clear the notification handler from all its active notifications */
   dismissAll() {
     if (!this._dismissAllLock && Object.keys(this._active).length !== 0) { // Check that _dimissAllLock is disable and that there is still notification displayed
       this._dismissAllLock = true; // dismissAllLock will be unlocked at the last _close() method call
@@ -1063,18 +1006,16 @@ class Notification {
   }
 
 
-  /**
-   * @method
+  /** @method
    * @name dismissType
    * @public
    * @memberof Notification
    * @author Arthur Beaulieu
    * @since June 2018
    * @description Dismiss all notifications from a given type
-   * @param {string} type - <i>succes; info; warning; error;</i>
-   **/
+   * @param {string} type - <i>succes; info; warning; error;</i> */
   dismissType(type) {
-    if (Object.keys(this._active).length !== 0) { // Check that _dimissAllLock is disable and that there is still notification displayed
+    if (Object.keys(this._active).length !== 0) { // Check that _dismissAllLock is disable and that there is still notification displayed
       for (const id in this._active) { // Iterate over notifications
         if (this._active[id].type === type) {
           this.dismiss(id);
@@ -1084,20 +1025,20 @@ class Notification {
   }
 
 
-  /**
-   * @method
+  /** @method
    * @name destroy
    * @public
    * @memberof Notification
    * @author Arthur Beaulieu
    * @since March 2019
-   * @description Destroy the singleton and detach it from the DOM
-   **/
+   * @description Destroy the singleton and detach it from the DOM */
   destroy() {
     Notification.instance = null;
     document.body.removeChild(this._dom);
     delete this;
   }
+
+
 }
 
 

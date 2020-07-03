@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Notification.js 1.1.0 - Demo</title>
+        <link rel="stylesheet" href="./dist/notification.min.css">
+        <style type="text/css"> /* Necessary to have MessCss.min.css here to avoid file pollution in repository */
+            html,body,div,span,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,a,cite,code,pre,em,img,q,small,strong,sub,sup,b,u,i,ol,ul,li,form,label,canvas,audio,video{border:0;font:inherit;font-size:100%;margin:0;padding:0;vertical-align:baseline}body{line-height:1}ol,ul{list-style:none}*,*:before,*:after{box-sizing:border-box}@keyframes fadein{from{opacity:0}to{opacity:1}}@keyframes fadeout{from{opacity:1}to{opacity:0}}@-moz-keyframes fadein{from{opacity:0}to{opacity:1}}@-moz-keyframes fadeout{from{opacity:1}to{opacity:0}}@-webkit-keyframes fadein{from{opacity:0}to{opacity:1}}@-webkit-keyframes fadeout{from{opacity:1}to{opacity:0}}@-o-keyframes fadein{from{opacity:0}to{opacity:1}}@-o-keyframes fadeout{from{opacity:1}to{opacity:0}}.no-padding{padding:0 !important}.no-margin{margin:0 !important}.app-padding{padding:10px !important}.app-margin{margin:20px !important}.border{border:1px solid #e6e6e6;border-radius:2px}.center,.row,.full-row{margin-left:auto;margin-right:auto;text-align:center;display:flex !important;align-items:center;justify-content:center}.inline-block{display:inline-block}html{background-color:#fff;font-family:Helvetica, sans-serif}body{color:#646464;font-size:14px;line-height:19.6px}h1,h2,h3,h4,h5,h6,p,ul,ol,blockquote,pre,code,input,button,select{margin-bottom:19.6px}h1,h2,h3,h4,h5,h6{color:#141414;font-weight:bold}h1{font-size:2em}h2{font-size:1.8em}h3{font-size:1.6em}h4{font-size:1.4em}h5{font-size:1.2em}h6{font-size:1em}strong,b{color:#141414;font-weight:bold}em,i{color:#141414;font-style:italic}s{color:#141414}cite{font-style:italic}a{-webkit-transition:.5s;-moz-transition:.5s;-o-transition:.5s;transition:.5s;color:red}a:active,a:focus,a:hover{color:lime}ol,ul{margin-left:1.6em;overflow:hidden}ol{list-style:decimal inside}ul{list-style:square inside}ol ol,ol ul,ul ul,ul ol{margin-bottom:0;margin-left:1.6em}code{background-color:#f0f0f0;border:1px solid #e6e6e6;border-radius:2px;display:inline-block;color:#141414;font-family:monospace, sans-serif;padding:0 5px}code.inline{display:initial;margin-bottom:0}pre{background-color:#f0f0f0;border:1px solid #e6e6e6;border-radius:2px;color:#141414;counter-reset:line;display:inline-block;font-family:monospace, sans-serif;padding:10px 20px 10px 5px;text-align:left}pre span::before{border-right:1px solid #a0a0a0;color:#646464;content:counter(line);counter-increment:line;display:inline-block;margin-right:10px;padding:0 20px;text-align:right;width:15px}blockquote,q{quotes:"«\a0" "\a0»"}blockquote::before,q::before{content:open-quote}blockquote::after,q::after{content:close-quote}blockquote:lang(en),q:lang(en){quotes:"\"\a0" "\a0\""}blockquote:lang(de),q:lang(de){quotes:"»\a0" "\a0«"}blockquote,blockquote+cite{border-left:2px solid #141414;margin:0 20px;padding:0 10px;overflow:hidden}blockquote+cite{display:block;margin-bottom:19.6px;text-align:right}blockquote+cite::before{content:'–\a0'}hr{margin-bottom:20px;margin-top:0}.align-left{text-align:left}.align-center{text-align:center}.align-right{text-align:right}.align-justify,.paragraph{text-align:justify}.lowercase{text-transform:lowercase}.uppercase{text-transform:uppercase}.capitalize{text-transform:capitalize}.bold{font-weight:bold}.italic{font-style:italic}.paragraph{text-indent:1.6em}.lead{font-size:1.33em}.truncate{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}img.align-left{float:left;margin-right:20px}img.align-right{float:right;margin-left:20px}img.align-center{display:block;margin:0 auto}button{background-color:transparent;border:1px solid #141414;border-radius:2px;cursor:pointer;padding:5px 10px}input[type=text],input[type=email],input[type=date],input[type=number],input[type=submit],select,textarea{background-color:transparent;border:1px solid #141414;border-radius:2px;padding:5px 10px;min-width:50px;max-width:200px}input[type=submit]{cursor:pointer}select{min-width:100px;max-width:500px;width:auto}textarea{min-width:180px;min-height:70px;width:auto}.row,.full-row{box-sizing:border-box;display:flex;flex-wrap:wrap;height:auto;margin-bottom:40px;max-width:1280px;width:100%}.full-row{max-width:100%}.halign-cols-left{justify-content:left}.halign-cols-center{justify-content:center}.halign-cols-right{justify-content:right}.valign-cols-top{align-items:flex-start}.valign-cols-center{align-items:center}.valign-cols-bottom{align-items:flex-end}[class^='col-'],.same-col{box-sizing:border-box;display:inline-block;float:left;min-height:1px;padding:0 20px;word-wrap:break-word}[class^='col-'] *:last-child,.same-col *:last-child{margin-bottom:0}.fit-height{height:100%}.col-one{width:10%}.col-two{width:20%}.col-three{width:30%}.col-four{width:40%}.col-five{width:50%}.col-six{width:60%}.col-seven{width:70%}.col-eight{width:80%}.col-nine{width:90%}.col-ten{width:100%}.same-col:first-child:nth-last-child(1){width:100%}.same-col:first-child:nth-last-child(2),.same-col:first-child:nth-last-child(2) ~ .same-col{width:calc(100% / 2)}.same-col:first-child:nth-last-child(3),.same-col:first-child:nth-last-child(3) ~ .same-col{width:calc(100% / 3)}.same-col:first-child:nth-last-child(4),.same-col:first-child:nth-last-child(4) ~ .same-col{width:calc(100% / 4)}.same-col:first-child:nth-last-child(5),.same-col:first-child:nth-last-child(5) ~ .same-col{width:calc(100% / 5)}.same-col:first-child:nth-last-child(6),.same-col:first-child:nth-last-child(6) ~ .same-col{width:calc(100% / 6)}.same-col:first-child:nth-last-child(7),.same-col:first-child:nth-last-child(7) ~ .same-col{width:calc(100% / 7)}.same-col:first-child:nth-last-child(8),.same-col:first-child:nth-last-child(8) ~ .same-col{width:calc(100% / 8)}.same-col:first-child:nth-last-child(9),.same-col:first-child:nth-last-child(9) ~ .same-col{width:calc(100% / 9)}.same-col:first-child:nth-last-child(10),.same-col:first-child:nth-last-child(10) ~ .same-col{width:calc(100% / 10)}.same-col:first-child:nth-last-child(11),.same-col:first-child:nth-last-child(11) ~ .same-col{width:calc(100% / 11)}.same-col:first-child:nth-last-child(12),.same-col:first-child:nth-last-child(12) ~ .same-col{width:calc(100% / 12)}.same-col:first-child:nth-last-child(13),.same-col:first-child:nth-last-child(13) ~ .same-col{width:calc(100% / 13)}.same-col:first-child:nth-last-child(14),.same-col:first-child:nth-last-child(14) ~ .same-col{width:calc(100% / 14)}.same-col:first-child:nth-last-child(15),.same-col:first-child:nth-last-child(15) ~ .same-col{width:calc(100% / 15)}.same-col:first-child:nth-last-child(16),.same-col:first-child:nth-last-child(16) ~ .same-col{width:calc(100% / 16)}.solid{background-color:white;border-radius:2px;-webkit-box-shadow:0 0 20px rgba(0,0,0,0.2);-moz-box-shadow:0 0 20px rgba(0,0,0,0.2);-o-box-shadow:0 0 20px rgba(0,0,0,0.2);box-shadow:0 0 20px rgba(0,0,0,0.2)}[data-tooltip]{cursor:pointer;position:relative}[data-tooltip]::after{background-color:rgba(0,0,0,0.75);color:#fff;content:attr(data-tooltip);font-size:14px;padding:10px;width:160px;z-index:1000}[data-tooltip]::before{background:transparent;border:6px solid transparent;content:'';z-index:1001}[data-tooltip]::after,[data-tooltip]::before{-webkit-transition:opacity .25s ease-in-out,visibility .25s ease-in-out,-webkit-transform .25s cubic-bezier(0.71, 1.7, 0.77, 1.24);-moz-transition:opacity .25s ease-in-out,visibility .25s ease-in-out,-moz-transform .25s cubic-bezier(0.71, 1.7, 0.77, 1.24);-o-transition:opacity .25s ease-in-out,visibility .25s ease-in-out,-o-transform .25s cubic-bezier(0.71, 1.7, 0.77, 1.24);transition:opacity .25s ease-in-out,visibility .25s ease-in-out,transform .25s cubic-bezier(0.71, 1.7, 0.77, 1.24);-webkit-transform:translate3d(0, 0, 0);-moz-transform:translate3d(0, 0, 0);-o-transform:translate3d(0, 0, 0);transform:translate3d(0, 0, 0);opacity:0;pointer-events:none;position:absolute;visibility:hidden}[data-tooltip]:hover::after,[data-tooltip]:focus::after,[data-tooltip]:focus::before,[data-tooltip]:hover::before{opacity:1;visibility:visible}.tooltip-top::after{margin-left:-80px}.tooltip-top::before{border-top-color:rgba(0,0,0,0.75);margin-bottom:-12px;margin-left:-6px}.tooltip-top::after,.tooltip-top::before{bottom:100%;left:50%}.tooltip-top:focus::after,.tooltip-top:hover::after,.tooltip-top:focus::before,.tooltip-top:hover::before{-webkit-transform:translateY(-12px);-moz-transform:translateY(-12px);-o-transform:translateY(-12px);transform:translateY(-12px)}.tooltip-bottom::after{margin-left:-80px}.tooltip-bottom::before{border-bottom-color:rgba(0,0,0,0.75);margin-left:-6px;margin-top:-12px}.tooltip-bottom::after,.tooltip-bottom::before{bottom:auto;left:50%;top:100%}.tooltip-bottom:focus::after,.tooltip-bottom:hover::after,.tooltip-bottom:focus::before,.tooltip-bottom:hover::before{-webkit-transform:translateY(12px);-moz-transform:translateY(12px);-o-transform:translateY(12px);transform:translateY(12px)}.tooltip-left::after{margin-bottom:-16px;margin-left:0}.tooltip-left::before{border-left-color:rgba(0,0,0,0.75);margin-bottom:12px;margin-left:0;margin-right:-12px;top:0}.tooltip-left::after,.tooltip-left::before{bottom:50%;left:auto;right:100%}.tooltip-left:focus::after,.tooltip-left:hover::after,.tooltip-left:focus::before,.tooltip-left:hover::before{-webkit-transform:translateX(-12px);-moz-transform:translateX(-12px);-o-transform:translateX(-12px);transform:translateX(-12px)}.tooltip-right::after{margin-bottom:-16px;margin-left:0}.tooltip-right::before{border-right-color:rgba(0,0,0,0.75);border-top-color:transparent;margin-bottom:0;margin-left:-12px;top:0}.tooltip-right::after,.tooltip-right::before{bottom:50%;left:100%}.tooltip-right:focus::after,.tooltip-right:hover::after,.tooltip-right:focus::before,.tooltip-right:hover::before{-webkit-transform:translateX(12px);-moz-transform:translateX(12px);-o-transform:translateX(12px);transform:translateX(12px)}.md{font-family:"Segoe UI", Helvetica, Arial, sans-serif;font-size:16px;line-height:1.5;word-wrap:break-word}.md h1{border-bottom:1px solid #eaecef;font-size:2em}.md h2{border-bottom:1px solid #eaecef;font-size:1.5em}.md h3{font-size:1.25em}.md h4{font-size:1em}.md h5{font-size:0.875em}.md h6{color:#6a737d;font-size:0.85em}.md h1,.md h2,.md h3,.md h4,.md h5,.md h6{font-weight:600;line-height:1.25;margin-bottom:16px;margin-top:24px}.md h1,.md h2{padding-bottom:0.3em}.md table{display:block;overflow:auto;width:100%}.md table th{font-weight:600}.md table th,.md table td{border:1px solid #dfe2e5;padding:6px 13px}.md table tr{background-color:#fff;border-top:1px solid #c6cbd1}.md table tr:nth-child(2n){background-color:#f6f8fa}
+        </style>
+     </head>
+    <body>
+        <a href="https://github.com/ArthurBeaulieu/Notification.js" target="_blank" style="position: absolute;"><img width="149" height="149" src="https://github.blog/wp-content/uploads/2008/12/forkme_left_darkblue_121621.png?resize=149%2C149" class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
+        <div class="row">
+            <div class="same-col">
+                <div class="row" style="margin-top: 19.6px;">
+                    <div class="col-seven">
+                        <h1>Notification.js</h1>
+                        <p class="paragraph">Made to let you focus on anything else that is not the user feedback. It was designed using the KISS (Keep It Simple Stupid!) spirit to make the less effort implementing it. Don't forget to link the stylesheet and the Javascript class in your project.</p>
+                        <p>If you want to try it out now, and skip the setup parts, please <a href="#playground">click here</a> to be moved to the API sandbox.</p>
+                    </div>
+                </div>
+                <hr>
+                <h3>Basic setup:</h3>
+                <div class="row">
+                    <div class="col-seven">
+                        <p class="paragraph">Once assets are safely linked to your project, you can initialize a Notification object. This object is both the notification handler and the notification itself, which means you won't have several object to create. We recommend that you attach the newly created Notification object to the window DOM object as follow, so you can access it from anywhere.</p>
+                        <code>window.notification = new Notification();</code>
+                        <p>That's it! Now all you have to do is to call for a typed notification when needed:</p>
+                        <code class="inline">window.notification.success({ message: 'Success notification' });</code><br>
+                        <code class="inline">window.notification.info({ message: 'Info notification' });</code><br>
+                        <code class="inline">window.notification.warning({ message: 'Warning notification' });</code><br>
+                        <code>window.notification.error({ message: 'Error notification' });</code>
+                        <div>
+                            <p>Try it out!</p>
+                            <button id="btn1">Success</button>
+                            <button id="btn2">Info</button>
+                            <button id="btn3">Warning</button>
+                            <button id="btn4">Error</button>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <h3>Advanced setup:</h3>
+                <div class="row">
+                    <div class="col-seven">
+                        <p class="paragraph">If you want to customize notifications and their behavior, you can also pass an options object that will contain some useful attributes to tweak. Let's start again, with a new notification handler. The values used here are the default ones.</p>
+                    </div>
+                </div>
+                <h4>Notification handler settings</h4>
+                <div class="full-row">
+                    <div class="same-col align-right">
+                        <h4 class="align-center">Code sample:</h4>
+<pre>window.notification = new Notification({
+    position: 'top-right',
+    thickBorder: 'top',
+    duration: 5000,
+    transition: 200,
+    maxActive: 10,
+    imgPath: './img/'
+});</pre>
+                        <p>These values are the default ones that will be used if you don't provide any options object to the Notification constructor, like in the basic setup section.</p>
+                    </div>
+                    <div class="same-col align-left">
+                        <p><b>Key:</b>&nbsp;&nbsp;&nbsp;&nbsp;<code class="inline">position</code> - The container position relative to the viewport.<br><b>Value:</b> <code class="inline">top-left</code> <code class="inline">top-right</code> <code class="inline">bottom-left</code> <code class="inline">bottom-right</code></p>
+                        <p><b>Key:</b>&nbsp;&nbsp;&nbsp;&nbsp;<code class="inline">thickBorder</code> - The location of a thicker border in the notification.<br><b>Value:</b> <code class="inline">left</code> <code class="inline">right</code> <code class="inline">top</code> <code class="inline">bottom</code> <code class="inline">none</code></p>
+                        <p><b>Key:</b>&nbsp;&nbsp;&nbsp;&nbsp;<code class="inline">duration</code> - The on-screen time in milliseconds the notification will remain visible.<br><b>Value:</b> <code class="inline">Number > 0</code></p>
+                        <p><b>Key:</b>&nbsp;&nbsp;&nbsp;&nbsp;<code class="inline">transition</code> - The fade in and out timing in milliseconds.<br><b>Value:</b> <code class="inline">Number > 0 &amp;&amp; Number < (duration / 2)</code></p>
+                        <p><b>Key:</b>&nbsp;&nbsp;&nbsp;&nbsp;<code class="inline">maxActive</code> - The maximum number of active notifications.<br><b>Value:</b> <code class="inline">Number > 0</code></p>
+                        <p><b>Key:</b>&nbsp;&nbsp;&nbsp;&nbsp;<code class="inline">imgPath</code> - The path to the image folder.<br><b>Value:</b> <code class="inline">String (os path)</code></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-seven">
+                        <p class="paragraph">Once the notification handler is customly setted up, you can also call for custom notifications using the <code class="inline">new()</code> public method that also can take an options object:</p>
+                    </div>
+                </div>
+                <h4>Notification settings</h4>
+                <div class="full-row">
+                    <div class="same-col align-right">
+                        <h4 class="align-center">Code sample:</h4>
+<pre>let id = window.notification.new({
+   type: 'info',
+   title: '',
+   message: 'Lorem ipsum dolor sit amet.',
+   duration: 5000,
+   iconless: false,
+   thickBorder: 'top'
+   closable: true,
+   sticky: false,
+   renderTo: document.body,
+   CBtitle: 'My callback',
+   callback: function() {
+       alert('Called from my notification');
+   }
+});</pre>
+                        <p>Please mind to give a <code class="inline">type</code> and a <code class="inline">message</code> otherwise, the notification handler will raise an error. These are not the default values, they are just here to stand as an use case example.</p>
+                    </div>
+                    <div class="same-col align-left">
+                        <p><b>Key:</b>&nbsp;&nbsp;&nbsp;&nbsp;<code class="inline">type</code> - The notification type.<br><b>Value:</b> <code class="inline">success</code> <code class="inline">info</code> <code class="inline">warning</code> <code class="inline">error</code> - <b><i>MANDATORY</i></b></p>
+                        <p><b>Key:</b>&nbsp;&nbsp;&nbsp;&nbsp;<code class="inline">title</code> - The notification title.<br><b>Value:</b> <code class="inline">String</code></p>
+                        <p><b>Key:</b>&nbsp;&nbsp;&nbsp;&nbsp;<code class="inline">message</code> - The notification message.<br><b>Value:</b> <code class="inline">String</code> - <b><i>MANDATORY</i></b></p>
+                        <p><b>Key:</b>&nbsp;&nbsp;&nbsp;&nbsp;<code class="inline">duration</code> - The notification duration.<br><b>Value:</b> <code class="inline">Number > 0</code></p>
+                        <p><b>Key:</b>&nbsp;&nbsp;&nbsp;&nbsp;<code class="inline">iconless</code> - No icon in the notification.<br><b>Value:</b> <code class="inline">Boolean</code></p>
+                        <p><b>Key:</b>&nbsp;&nbsp;&nbsp;&nbsp;<code class="inline">thickBorder</code> - The location of the thicker border in the notification.<br><b>Value:</b> <code class="inline">left</code> <code class="inline">right</code> <code class="inline">top</code> <code class="inline">bottom</code> <code class="inline">none</code></p>
+                        <p><b>Key:</b>&nbsp;&nbsp;&nbsp;&nbsp;<code class="inline">closable</code> - Allow user to close the notification.<br><b>Value:</b> <code class="inline">Boolean</code></p>
+                        <p><b>Key:</b>&nbsp;&nbsp;&nbsp;&nbsp;<code class="inline">sticky</code> - Dismissable notification only on user action.<br><b>Value:</b> <code class="inline">Boolean</code></p>
+                        <p><b>Key:</b>&nbsp;&nbsp;&nbsp;&nbsp;<code class="inline">renderTo</code> - The DOM object to render the notification in.<br><b>Value:</b> <code class="inline">Object</code></p>
+                        <p><b>Key:</b>&nbsp;&nbsp;&nbsp;&nbsp;<code class="inline">CBTitle</code> - The callback label in the notification.<br><b>Value:</b> <code class="inline">String</code></p>
+                        <p><b>Key:</b>&nbsp;&nbsp;&nbsp;&nbsp;<code class="inline">callback</code> - Add a callback button in the notification.<br><b>Value:</b> <code class="inline">Function</code></p>
+                    </div>
+                </div>
+                <hr>
+                <h3 id="playground">Notification playground:</h3>
+                <div class="row" style="height: 585px;">
+                    <div class="col-three align-right">
+                        <label for="type">Type: </label>
+                        <select id="type" name="type">
+                            <option value="success">Success</option>
+                            <option value="info">Info</option>
+                            <option value="warning">Warning</option>
+                            <option value="error">Error</option>
+                        </select><br>
+                        <label for="type">Title: </label>
+                        <input id="title" type="text" name="title"><br>
+                        <label for="message">Message: </label>
+                        <input id="message" type="text" name="message"><br>
+                        <label for="duration">Duration: </label>
+                        <input id="duration" type="text" name="duration"><br>
+                        <label for="iconless">Iconless: </label>
+                        <select id="iconless" name="iconless">
+                            <option value="false">False</option>
+                            <option value="true">True</option>
+                        </select><br>
+                        <label for="thickBorder">Thick border: </label>
+                        <input id="thickBorder" type="text" name="thickBorder"><br>
+                        <label for="closable">Closable: </label>
+                        <select id="closable" name="closable">
+                            <option value="true">True</option>
+                            <option value="false">False</option>
+                        </select><br>
+                        <label for="sticky">Sticky: </label>
+                        <select id="sticky" name="sticky">
+                            <option value="false">False</option>
+                            <option value="true">True</option>
+                        </select><br>
+                        <label for="renderTo">Render to: </label>
+                        <select id="renderTo" name="renderTo">
+                            <option value="handler">Handler</option>
+                            <option value="elsewhere">Elsewhere</option>
+                        </select><br>
+                        <label for="cbtitle">Callback title: </label>
+                        <input id="cbtitle" type="text" name="cbtitle"><br>
+                        <label for="callback">Alert callback: </label>
+                        <input id="callback" type="checkbox" name="callback"><br>
+                        <button id="btn5" style="margin-bottom: 0;">Generate</button>
+                        <button id="btn6" style="margin-bottom: 0;">Clear all</button><br>
+                    </div>
+                    <div class="col-six solid fit-height" style="margin-left: 20px;">
+                        <br><p>Use <code class="inline">Elsewhere</code> in the 'Render to' select menu tu make a notification appear here.</p>
+                        <div id="renderme"></div>
+                    </div>
+                </div>
+                <hr>
+                <h3>Going further:</h3>
+                <div class="row">
+                    <div class="col-seven">
+                        <p class="paragraph">If you want to have a better understanding of the Notification class, without spending hours parsing the source code, you can access the <a href="./doc/index.html" target="_blank">JSDoc</a> documentation (<a href="https://github.com/ArthurBeaulieu/Notification.js/wiki/Generate-documentation">see</a> the command to locally generate the doc). Now that your are familliar with the Notification system, here are several other customization that you can do :</p>
+                        <p class="paragraph">You can set your own notification special variables in the <code class="inline">notification.scss</code> file to obtain a fully personnalized notification system: margin, padding, icon size, border sizes and width.</p>
+                        <p class="paragraph">If you intend to change the color values in the <code class="inline">notification.scss</code> file, beware to change them accordingly in the <code class="inline">Notification.js</code> constructor, in the <code class="inline">this._default</code> object since they are used on both file for different purpose.</p>
+                        <p class="paragraph">Finally, feel free to contribute to this project by openning an issue or by making a pull request! Check out the <a href="https://github.com/ArthurBeaulieu/Notification.js" target="_blank">GitHub</a> repository.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="module">
+            import Notification from './src/js/Notification.js';
+            window.notification = new Notification({
+              imgPath: './src/img/'
+            });
+            document.getElementById('btn1').onclick = function() { window.notification.success({ message: 'Success notification' }); };
+            document.getElementById('btn2').onclick = function() { window.notification.info({ message: 'Info notification' }); };
+            document.getElementById('btn3').onclick = function() { window.notification.warning({ message: 'Warning notification' }); };
+            document.getElementById('btn4').onclick = function() { window.notification.error({ message: 'Error notification' }); };
+            document.getElementById('btn5').onclick = function() {
+                var options = {
+                   type: document.getElementById('type').value,
+                   title: document.getElementById('title').value.length > 0 ? document.getElementById('title').value : undefined,
+                   message: document.getElementById('message').value,
+                   duration: document.getElementById('duration').value.length > 0 ? document.getElementById('duration').value : undefined,
+                   iconless: JSON.parse(document.getElementById('iconless').value),
+                   thickBorder: document.getElementById('thickBorder').value.length > 0 ? document.getElementById('thickBorder').value : undefined,
+                   closable: JSON.parse(document.getElementById('closable').value),
+                   sticky: JSON.parse(document.getElementById('sticky').value),
+                   renderTo: (document.getElementById('renderTo').value === 'elsewhere' ? document.getElementById('renderme') : undefined),
+                   CBtitle: document.getElementById('cbtitle').value.length > 0 ? document.getElementById('cbtitle').value : undefined,
+                   callback: (document.getElementById('callback').checked ? function() {
+                       alert('Called from my notification');
+                   } : undefined)
+                };
+                if (options.message.length === 0) {
+                    notification.error({ message: 'You didn\'t gave the to the playground a type and/or a title.', renderTo: document.getElementById('renderme') });
+                } else {
+                    window.notification.new(options);
+                }
+            };
+            document.getElementById('btn6').onclick = function() { window.notification.dismissAll(); };
+        </script>
+    </body>
+</html>

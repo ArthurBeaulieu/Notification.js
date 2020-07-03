@@ -1,11 +1,12 @@
-import Notification from '../../src/js/Notification.js';
+import Notification from '../src/js/Notification.js';
+'use strict';
 
-const TIMEOUT = 500;
+
 let notification = {};
 
-// To avoid CORS errors when running this UT, use a local web server to perform the test scenario
+
 describe('Testing Notification.js module', function() {
-  describe('Handler instanciation', function() {
+  describe('Handler instantiation', function() {
     it('Create with no parameters', function(done) {
       notification = new Notification();
       // Default handler values
@@ -32,7 +33,7 @@ describe('Testing Notification.js module', function() {
         duration: 1234,
         transition: 100,
         maxActive: 42,
-        imgPath: '../../src/img/'
+        imgPath: '../src/img/'
       };
       notification = new Notification(parameters);
       // Default handler values
@@ -69,7 +70,7 @@ describe('Testing Notification.js module', function() {
         duration: 2000,
         transition: 100,
         maxActive: 5,
-        imgPath: '../../src/img/'
+        imgPath: '../src/img/'
       });
       expect(notification).not.toBe(null);
       expect(notification).not.toBe(undefined);

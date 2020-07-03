@@ -2,23 +2,43 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>Home | Notification.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
     <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-jsdoc.css">
     <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
-    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+    <link type="text/css" rel="stylesheet" href="styles/tui-doc.css">
+
+    
 </head>
-
 <body>
+<nav class="lnb" id="lnb">
+    <div class="logo" style="">
+        
+            <img src="img/toast-ui.png" width="100%" height="100%">
+        
+    </div>
+    <div class="title">
+        <h1><a href="index.html" class="link">Notification.js</a></h1>
+        
+            <span class="version">v1.1.0</span>
+        
+    </div>
+    <div class="search-container" id="search-container">
+        <input type="text" placeholder="Search">
+        <ul></ul>
+    </div>
+    
+    <div class="lnb-api hidden"><h3>Classes</h3><ul><li><a href="Notification.html">Notification</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="Notification_sub"><div class="member-type">Members</div><ul class="inner"><li><a href="Notification.html#_active">_active</a></li><li><a href="Notification.html#_default">_default</a></li><li><a href="Notification.html#_dismissAllLock">_dismissAllLock</a></li><li><a href="Notification.html#_dom">_dom</a></li><li><a href="Notification.html#_duration">_duration</a></li><li><a href="Notification.html#_imgPath">_imgPath</a></li><li><a href="Notification.html#_maxActive">_maxActive</a></li><li><a href="Notification.html#_position">_position</a></li><li><a href="Notification.html#_queue">_queue</a></li><li><a href="Notification.html#_thickBorder">_thickBorder</a></li><li><a href="Notification.html#_transition">_transition</a></li></ul><div class="member-type">Methods</div><ul class="inner"><li><a href="Notification.html#._attach">_attach</a></li><li><a href="Notification.html#._buildNotificationType">_buildNotificationType</a></li><li><a href="Notification.html#._buildUI">_buildUI</a></li><li><a href="Notification.html#._buildUIDom">_buildUIDom</a></li><li><a href="Notification.html#._checkCounter">_checkCounter</a></li><li><a href="Notification.html#._checkOptionsValidity">_checkOptionsValidity</a></li><li><a href="Notification.html#._clearRequestCount">_clearRequestCount</a></li><li><a href="Notification.html#._close">_close</a></li><li><a href="Notification.html#._decrementRequestCounter">_decrementRequestCounter</a></li><li><a href="Notification.html#._dim">_dim</a></li><li><a href="Notification.html#._events">_events</a></li><li><a href="Notification.html#._idGenerator">_idGenerator</a></li><li><a href="Notification.html#._incrementRequestCounter">_incrementRequestCounter</a></li><li><a href="Notification.html#._init">_init</a></li><li><a href="Notification.html#._open">_open</a></li><li><a href="Notification.html#._resetTimeout">_resetTimeout</a></li><li><a href="Notification.html#._setAttributesDefault">_setAttributesDefault</a></li><li><a href="Notification.html#._setOptionsDefault">_setOptionsDefault</a></li><li><a href="Notification.html#._setOptionsFallback">_setOptionsFallback</a></li><li><a href="Notification.html#._start">_start</a></li><li><a href="Notification.html#._unDim">_unDim</a></li><li><a href="Notification.html#.destroy">destroy</a></li><li><a href="Notification.html#.dismiss">dismiss</a></li><li><a href="Notification.html#.dismissAll">dismissAll</a></li><li><a href="Notification.html#.dismissType">dismissType</a></li><li><a href="Notification.html#.error">error</a></li><li><a href="Notification.html#.info">info</a></li><li><a href="Notification.html#.new">new</a></li><li><a href="Notification.html#.success">success</a></li><li><a href="Notification.html#.warning">warning</a></li></ul></div></li></ul></div>
+</nav>
+<div id="resizer"></div>
 
-<div id="main">
-
-    <h1 class="page-title">Home</h1>
-
+<div class="main" id="main">
     
 
 
@@ -26,10 +46,6 @@
     
 
 
-    <h3> </h3>
-
-
-
 
 
 
@@ -38,22 +54,28 @@
 
 
     
-
-
 
 
     <section>
-        <article><h1>Notification.js</h1><p><em>Notification.js</em> is a standalone ES6 module that allows you to easily handle several notifications from different types at the same time. It features a lot of options so you can customize it.</p>
-<p><img src="https://badgen.net/badge/version/1.0.0/green" alt="Version"> <img src="https://badgen.net/badge/license/GPL-3.0/blue" alt="Open Source Love"></p>
-<h2>Get started</h2><p><em>Notification.js</em> handles four different types of notifications : <strong>Success</strong>, <strong>Info</strong>, <strong>Warning</strong> and <strong>Error</strong>.</p>
+        <article class="readme"><h1>Notification.js</h1>
+<p><em>Notification.js</em> is a standalone ES6 module that allows you to easily handle several notifications from different types at the same time. It features a lot of options so you can customize it.</p>
+<p><img src="https://badgen.net/badge/version/1.1.0/green" alt="Version"> <img src="https://badgen.net/badge/license/GPL-3.0/blue" alt="Open Source Love"></p>
+<h2>Get started</h2>
+<p><em>Notification.js</em> handles four different types of notifications : <strong>Success</strong>, <strong>Info</strong>, <strong>Warning</strong> and <strong>Error</strong>.</p>
 <p>The first step for you to get started with <em>Notification.js</em> is to copy both the <code>dist/Notification.min.js</code> and <code>dist/notification.min.css</code> files in your code base, and the <code>img</code> folder anywhere you need. don't forget to give that path to the Notification constructor, so it can find the needed pictures. Once pasted, don't forget to include the style and the script in your HTML page. You're good to go!</p>
-<h4>Basic usage</h4><p>To make <em>Notification.js</em> work, you must call for a new notification handler. It will handle all new notifications coming to the stack, with their specificities. Attach preferabkly this handler to the window object, so you can access it from anywhere in your app:</p>
-<pre class="prettyprint source lang-javascript"><code>window.notification = new Notification();</code></pre><p>Now that the handler is set, you can call for new notifications anywhere, at anytime using the following calls:</p>
+<h4>Basic usage</h4>
+<p>To make <em>Notification.js</em> work, you must call for a new notification handler. It will handle all new notifications coming to the stack, with their specificities. Attach preferabkly this handler to the window object, so you can access it from anywhere in your app:</p>
+<pre class="prettyprint source lang-javascript"><code>window.notification = new Notification();
+</code></pre>
+<p>Now that the handler is set, you can call for new notifications anywhere, at anytime using the following calls:</p>
 <pre class="prettyprint source lang-javascript"><code>window.notification.success({ message: 'Great success!' });
 window.notification.info({ message: 'Much info, very text' });
 window.notification.warning({ message: 'Snake?' });
-window.notification.error({ message: 'Snaaaaaaaake!' });</code></pre><p>The message string passed is <strong>mandatory</strong>. Forget to pass it and you will raise an error in the console.</p>
-<h4>Advanced usage</h4><p>The Notification constructor can take an options object with the following attributes :</p>
+window.notification.error({ message: 'Snaaaaaaaake!' });
+</code></pre>
+<p>The message string passed is <strong>mandatory</strong>. Forget to pass it and you will raise an error in the console.</p>
+<h4>Advanced usage</h4>
+<p>The Notification constructor can take an options object with the following attributes :</p>
 <pre class="prettyprint source lang-javascript"><code>window.notification = new notification({
     position: 'top-left',
     thickBorder: 'bottom',
@@ -61,7 +83,9 @@ window.notification.error({ message: 'Snaaaaaaaake!' });</code></pre><p>The mess
     transition: 100,
     maxActive: 5,
     imgPath: '/path/to/img/'
-});</code></pre><p>The handler is now ready with your custom settings. To call for a new notification, you can still use the typed methods <code>.success()</code>, <code>.info()</code>, <code>.warning()</code> and <code>.error()</code> from <strong>Basic Usage</strong>, but you can also use the <code>.new()</code> method :</p>
+});
+</code></pre>
+<p>The handler is now ready with your custom settings. To call for a new notification, you can still use the typed methods <code>.success()</code>, <code>.info()</code>, <code>.warning()</code> and <code>.error()</code> from <strong>Basic Usage</strong>, but you can also use the <code>.new()</code> method :</p>
 <pre class="prettyprint source lang-JavaScript"><code>let id = window.notification.new({
    type: 'info', // Mandatory
    title: 'My test notification',
@@ -75,12 +99,23 @@ window.notification.error({ message: 'Snaaaaaaaake!' });</code></pre><p>The mess
    callback: function() {
      alert('Called from My test notification');
    }
-});</code></pre><p>The only difference with the typed methods is that with the <code>.new()</code> method, you must give it a type beside giving it a message: those are the two required options to create a standard notification. You can also pass this options object to the typed methods.</p>
+});
+</code></pre>
+<p>The only difference with the typed methods is that with the <code>.new()</code> method, you must give it a type beside giving it a message: those are the two required options to create a standard notification. You can also pass this options object to the typed methods.</p>
 <p>As for the typed methods, the <code>new()</code> method return the notification ID, in case you want some manual control over your notifications, this is why we store it in the <code>id</code> variable. Using this ID, you can dismiss a specific notification :</p>
-<pre class="prettyprint source lang-JavaScript"><code>window.notification.dismiss(id);</code></pre><p>Or dismiss them all :</p>
-<pre class="prettyprint source lang-JavaScript"><code>window.notification.dismissAll();</code></pre><p>Finaly, if you want to clear the Notification singleton, use the <code>destroy()</code> method on the handler :</p>
-<pre class="prettyprint source lang-javascript"><code>window.notification.destroy();</code></pre><h4>Further reading</h4><p>In the <code>doc</code> folder, there is a <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> that has been generated. It is highly detailled, so we recommend you to read this documentation if you want to enhance or modify the class itself. There are some example in the <code>src/Notification.html</code> and a sand box so you can try the system and watch all possibilities given by the passed options.</p>
-<h2>Notification options</h2><h4>Handler settings</h4><table>
+<pre class="prettyprint source lang-JavaScript"><code>window.notification.dismiss(id);
+</code></pre>
+<p>Or dismiss them all :</p>
+<pre class="prettyprint source lang-JavaScript"><code>window.notification.dismissAll();
+</code></pre>
+<p>Finaly, if you want to clear the Notification singleton, use the <code>destroy()</code> method on the handler :</p>
+<pre class="prettyprint source lang-javascript"><code>window.notification.destroy();
+</code></pre>
+<h4>Further reading</h4>
+<p>In the <code>doc</code> folder, there is a <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> that has been generated. It is highly detailled, so we recommend you to read this documentation if you want to enhance or modify the class itself. There are some example in the <code>src/Notification.html</code> and a sand box so you can try the system and watch all possibilities given by the passed options.</p>
+<h2>Notification options</h2>
+<h4>Handler settings</h4>
+<table>
 <thead>
 <tr>
 <th style="text-align:right"><em>Options</em></th>
@@ -121,7 +156,8 @@ window.notification.error({ message: 'Snaaaaaaaake!' });</code></pre><p>The mess
 </tr>
 </tbody>
 </table>
-<h4>Notification settings</h4><table>
+<h4>Notification settings</h4>
+<table>
 <thead>
 <tr>
 <th style="text-align:right"><em>Option</em></th>
@@ -182,9 +218,11 @@ window.notification.error({ message: 'Snaaaaaaaake!' });</code></pre><p>The mess
 </tr>
 </tbody>
 </table>
-<h2>Unit test</h2><p>The <a href="https://github.com/jasmine/jasmine">Jasmine</a> framework is used to perform tests (v3.2.1) on <em>Notification.js</em>.</p>
+<h2>Unit test</h2>
+<p>The <a href="https://github.com/jasmine/jasmine">Jasmine</a> framework is used to perform tests (v3.2.1) on <em>Notification.js</em>.</p>
 <p>You can test the source code locally by opening the <code>test/SpecRunner.html</code> file ; because <em>Notification.js</em> is a module, you will encounter a CORS error that prevents you to perform the test ; you can either run a local server, or <a href="https://www.thepolyglotdeveloper.com/2014/08/bypass-cors-errors-testing-apis-locally/">disable a security flag</a> in your browser (mind to re-enable it after test) to bypass this restriction.</p>
-<h2>Contribute</h2><p>If you want to contribute in any way, please open an issue with your suggestions or even better, make a pull request! I am aware that this module is far from perfect so feel free to help out to make this great again!</p>
+<h2>Contribute</h2>
+<p>If you want to contribute in any way, please open an issue with your suggestions or even better, make a pull request! I am aware that this module is far from perfect so feel free to help out to make this great again!</p>
 <p>June 2018 - March 2019</p></article>
     </section>
 
@@ -195,17 +233,24 @@ window.notification.error({ message: 'Snaaaaaaaake!' });</code></pre><p>The mess
 
 </div>
 
-<nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Notification.html">Notification</a></li></ul>
-</nav>
-
-<br class="clear">
-
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Wed Mar 06 2019 19:48:03 GMT+0100 (Central European Standard Time)
+    <img class="logo" src="img/toast-ui.png" style="">
+    <div class="footer-text">Notification.js - Version 1.1.0</div>
 </footer>
+<script>prettyPrint();</script>
+<script src="scripts/jquery.min.js"></script>
+<script src="scripts/tui-doc.js"></script>
+<script src="scripts/linenumber.js"></script>
 
-<script> prettyPrint(); </script>
-<script src="scripts/linenumber.js"> </script>
+    <script>
+        var id = 'package:Notification.js_sub'.replace(/"/g, '_');
+        var selectedApi = document.getElementById(id); // do not use jquery selector
+        var $selectedApi = $(selectedApi);
+
+        $selectedApi.removeClass('hidden');
+        $selectedApi.parent().find('.glyphicon').removeClass('glyphicon-plus').addClass('glyphicon-minus');
+        showLnbApi();
+    </script>
+
 </body>
 </html>

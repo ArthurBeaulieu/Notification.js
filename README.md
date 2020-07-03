@@ -2,7 +2,7 @@
 
 *Notification.js* is a standalone ES6 module that allows you to easily handle several notifications from different types at the same time. It features a lot of options so you can customize it.
 
-![Version](https://badgen.net/badge/version/1.0.0/green) ![Open Source Love](https://badgen.net/badge/license/GPL-3.0/blue)
+![Version](https://badgen.net/badge/version/1.1.0/green) ![Open Source Love](https://badgen.net/badge/license/GPL-3.0/blue)
 
 ## Get started
 
