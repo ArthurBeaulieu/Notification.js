@@ -2,7 +2,12 @@
   "name": "Notification.js",
   "version": "1.1.0",
   "description": "Exactly what it means. Notification manager for web application.",
-  "keywords": ["javascript", "notification", "feedback", "es6-module"],
+  "keywords": [
+    "javascript",
+    "notification",
+    "feedback",
+    "es6-module"
+  ],
   "homepage": "https://github.com/ArthurBeaulieu/Notification.js",
   "license": "GPL-3.0",
   "author": "Arthur Beaulieu",

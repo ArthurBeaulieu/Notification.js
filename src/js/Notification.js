@@ -1,18 +1,12 @@
 'use strict';
 
 
-/**
- * @class
- * @author Arthur Beaulieu
- * @since June 2018
- * @description Notification Singleton Class to automatically handle one or several notification of different types at the same time.
- **/
 class Notification {
 
 
   /** @summary Create an instance of a notification handler
    * @author Arthur Beaulieu
-   * @since March 2019
+   * @since June 2018
    * @description Build the notification singleton handler that will handle all incoming Notifications
    * @param {object} [options] - The notification handler global options
    * @param {string} [options.position=top-right] - <i>top-left; top-right; bottom-left; bottom-right;</i>
@@ -64,13 +58,31 @@ class Notification {
     this.version = '1.1.0';
     // Build singleton and attach
     this._init(options);
-    this._attach();
-    // Retrurn singleton
+    // Return singleton
     return this;
   }
 
 
-  //  --------------------------------  PRIVATE METHODS  --------------------------------  //
+  /** @method
+   * @name destroy
+   * @public
+   * @memberof Notification
+   * @author Arthur Beaulieu
+   * @since March 2019
+   * @description Destroy the singleton and detach it from the DOM */
+  destroy() {
+    Notification.instance = null;
+    document.body.removeChild(this._dom);
+    delete this;
+  }
+
+
+  /*  --------------------------------------------------------------------------------------------------------------- */
+  /*  ------------------------------  NOTIFICATION JS HANDLER CONSTRUCTION METHODS  --------------------------------  */
+  /*                                                                                                                  */
+  /*  The following methods only concerns the singleton creation. It handle all arguments and will fallback on        */
+  /*  default values if any argument doesn't meet its expected value or type.                                         */
+  /*  --------------------------------------------------------------------------------------------------------------- */
 
 
   /** @method
@@ -134,6 +146,7 @@ class Notification {
     this._setAttributesDefault();
     // Add position CSS class only after this._position is sure to be a valid value
     this._dom.classList.add(this._position);
+    this._attach();
   }
 
 
@@ -201,12 +214,16 @@ class Notification {
       this._duration = this._default.handler.duration; // Default value
     }
 
-    if (this._duration < (this._transition * 2)) { // Transition over (duration / 2)
+    if (typeof this._transition !== 'number' || this._duration < (this._transition * 2) || this._transition <= 0) { // Transition over (duration / 2)
       this._transition = this._default.handler.transition; // Default value for _maxActive
     }
 
     if (typeof this._maxActive !== 'number' || this._maxActive <= 0) { // Illegal value for maxActive
       this._maxActive = this._default.handler.maxActive; // Default value for _maxActive
+    }
+
+    if (typeof this._imgPath !== 'string') {
+      this._imgPath = this._default.handler.imgPath;
     }
   }
 
@@ -223,6 +240,15 @@ class Notification {
     fragment.appendChild(this._dom);
     document.body.appendChild(fragment);
   }
+
+
+  /*  --------------------------------------------------------------------------------------------------------------- */
+  /*  -------------------------------------  NOTIFICATION SPECIFIC METHODS  ----------------------------------------  */
+  /*                                                                                                                  */
+  /*  The following methods implements notification features. It handle its events, lifecycle depending on its        */
+  /*  parameters, its DOM structure, and its animations. The Notification singleton will handle the notification      */
+  /*  stacking the in user interface.                                                                                 */
+  /*  --------------------------------------------------------------------------------------------------------------- */
 
 
   /** @method
@@ -716,71 +742,16 @@ class Notification {
   }
 
 
-  //  --------------------------------  PUBLIC METHODS  ---------------------------------  //
+  /*  --------------------------------------------------------------------------------------------------------------- */
+  /*  -----------------------------  SINGLE NOTIFICATION CONSTRUCTION UTILS METHODS  -------------------------------  */
+  /*                                                                                                                  */
+  /*  The following methods only concerns a new notification request. It will test the options validity, default to   */
+  /*  fallback value if necessary and give the notification a pseudo unique identifier.                               */
+  /*  --------------------------------------------------------------------------------------------------------------- */
 
 
   /** @method
-   * @name new
-   * @public
-   * @memberof Notification
-   * @author Arthur Beaulieu
-   * @since June 2018
-   * @description Build a notification according to the given options, then append it to notification container.
-   * @param {object} options - The notification options object
-   * @param {string} options.type - <i>Error; Warning; Info; Success;</i>
-   * @param {string} [options.title=options.type] - Notification title
-   * @param {string} options.message - Notification message
-   * @param {number} [options.duration=handler] - Notification duration (override handler duration value)
-   * @param {boolean} [options.iconless=false] - No icon flag
-   * @param {string} [options.thickBorder=handler] - Notification border side (override handler side value)
-   * @param {boolean} [options.closable=true] - Make notification closable flag
-   * @param {boolean} [options.sticky=false] - Make notification sticky flag
-   * @param {object} [options.renderTo=handler] - Dom object to render the notification in
-   * @param {string} [options.CBtitle=Callback] - Notification callback title
-   * @param {function} [options.callback=undefined] - Notification callback button
-   * @returns {number} The newly created notification ID */
-  new(options) {
-    if (this._checkOptionsValidity(options) === false) {
-      console.error('Notification.js : new() options argument object is invalid.');
-      return -1;
-    }
-
-    this._setOptionsFallback(options);
-    // Build notification DOM element according to the given options
-    let notification = this._buildUI({
-      id: this._idGenerator(`${options.type}${options.message}`, 5), // Generating an ID of 5 characters long from notification mandatory fields
-      type: options.type,
-      message: options.message,
-      title: options.title,
-      duration: options.duration,
-      iconless: options.iconless,
-      thickBorder: options.thickBorder,
-      closable: options.closable,
-      sticky: options.sticky,
-      renderTo: options.renderTo,
-      CBtitle: options.CBtitle,
-      callback: options.callback,
-      isDimmed: options.isDimmed // Only usefull if sticky is set to true
-    });
-
-    // Create a new notification in the container: No notification with the same ID is already open
-    if (!this._active[notification.id]) {
-      this._start(notification);
-    }
-
-    // Use existing notification: increment request count and reset timeout
-    else {
-      this._resetTimeout(this._active[notification.id]);
-      this._incrementRequestCounter(this._active[notification.id]);
-      notification = {}; // Clear local new notification since it already exists in this._active
-    }
-
-    return notification.id;
-  }
-
-
-  /** @method
-   * @name _checkOptionsValidity
+   * @name _checkNotificationOptionsValidity
    * @private
    * @memberof Notification
    * @summary Check the Notification options validity
@@ -788,13 +759,17 @@ class Notification {
    * @since March 2019
    * @description Check a Notification options object against the required parameters.
    * @param {object} options - The notification options to check validity */
-  _checkOptionsValidity(options) {
+  _checkNotificationOptionsValidity(options) {
     // Check for mandatory arguments existence
-    if (options === undefined || options.type === undefined || (options.message === undefined || options.message === '')) {
+    if (options === undefined || (options.type === undefined || options.message === undefined)) {
       return false;
     }
     // Check for unclosable at all notification
     if (options.sticky && options.closable === false && options.callback === undefined) {
+      return false;
+    }
+    // Check existing message
+    if (typeof options.message !== 'string' || options.message.length === 0) {
       return false;
     }
     // Test Notification inner variables validity
@@ -858,7 +833,7 @@ class Notification {
 
     if (options.isDimmed === undefined) {
       options.isDimmed = this._default.notification.isDimmed;
-    }    
+    }
   }
 
 
@@ -889,6 +864,70 @@ class Notification {
     }
 
     return (Math.abs(hash).toString(36) + '' + Math.abs(hash / 2).toString(36).split('').reverse().join('')).substring(0, length).toUpperCase(); // Here is the twekead line
+  }
+
+
+  /*  --------------------------------------------------------------------------------------------------------------- */
+  /*  --------------------------------------  NOTIFICATION PUBLIC METHODS  -----------------------------------------  */
+  /*                                                                                                                  */
+  /*  The following methods are the exposed API of the Notification component. It allow to raise standard or custom   */
+  /*  notification without bothering their lifecycle, position or other JavaScript expensive implementation.          */
+  /*  --------------------------------------------------------------------------------------------------------------- */
+
+
+  /** @method
+   * @name new
+   * @public
+   * @memberof Notification
+   * @author Arthur Beaulieu
+   * @since June 2018
+   * @description Build a notification according to the given options, then append it to notification container.
+   * @param {object} options - The notification options object
+   * @param {string} options.type - <i>Error; Warning; Info; Success;</i>
+   * @param {string} [options.title=options.type] - Notification title
+   * @param {string} options.message - Notification message
+   * @param {number} [options.duration=handler] - Notification duration (override handler duration value)
+   * @param {boolean} [options.iconless=false] - No icon flag
+   * @param {string} [options.thickBorder=handler] - Notification border side (override handler side value)
+   * @param {boolean} [options.closable=true] - Make notification closable flag
+   * @param {boolean} [options.sticky=false] - Make notification sticky flag
+   * @param {object} [options.renderTo=handler] - Dom object to render the notification in
+   * @param {string} [options.CBtitle=Callback] - Notification callback title
+   * @param {function} [options.callback=undefined] - Notification callback button
+   * @returns {number} The newly created notification ID */
+  new(options) {
+    if (this._checkNotificationOptionsValidity(options) === false) {
+      console.error('Notification.js : new() options argument object is invalid.');
+      return -1;
+    }
+
+    this._setOptionsFallback(options);
+    // Build notification DOM element according to the given options
+    let notification = this._buildUI({
+      id: this._idGenerator(`${options.type}${options.message}`, 5), // Generating an ID of 5 characters long from notification mandatory fields
+      type: options.type,
+      message: options.message,
+      title: options.title,
+      duration: options.duration,
+      iconless: options.iconless,
+      thickBorder: options.thickBorder,
+      closable: options.closable,
+      sticky: options.sticky,
+      renderTo: options.renderTo,
+      CBtitle: options.CBtitle,
+      callback: options.callback,
+      isDimmed: options.isDimmed // Only useful if sticky is set to true
+    });
+    // Create a new notification in the container: No notification with the same ID is already open
+    if (!this._active[notification.id]) {
+      this._start(notification);
+    } else { // Use existing notification: increment request count and reset timeout
+      this._resetTimeout(this._active[notification.id]);
+      this._incrementRequestCounter(this._active[notification.id]);
+      notification = this._active[notification.id]; // Clear local new notification since it already exists in this._active
+    }
+
+    return notification.id;
   }
 
 
@@ -1022,20 +1061,6 @@ class Notification {
         }
       }
     }
-  }
-
-
-  /** @method
-   * @name destroy
-   * @public
-   * @memberof Notification
-   * @author Arthur Beaulieu
-   * @since March 2019
-   * @description Destroy the singleton and detach it from the DOM */
-  destroy() {
-    Notification.instance = null;
-    document.body.removeChild(this._dom);
-    delete this;
   }
 
 
