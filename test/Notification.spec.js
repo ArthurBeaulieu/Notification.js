@@ -77,7 +77,7 @@ describe('Notification unit test', () => {
       duration: 3000,
       transition: 500,
       maxActive: 5,
-      imgPath: '../img/'
+      imgPath: '../src/img/'
     });
     // Notification must be built with default arguments
     // Component existence
@@ -95,8 +95,11 @@ describe('Notification unit test', () => {
     expect(NotificationMgt._duration).toEqual(3000);
     expect(NotificationMgt._transition).toEqual(500);
     expect(NotificationMgt._maxActive).toEqual(5);
-    expect(NotificationMgt._imgPath).toEqual('../img/');
+    expect(NotificationMgt._imgPath).toEqual('../src/img/');
     expect(NotificationMgt.version).toEqual('1.1.0');
+    // Component proper destruction
+    NotificationMgt.destroy();
+    NotificationMgt = null;
     done();
   });
 
@@ -106,6 +109,14 @@ describe('Notification unit test', () => {
 
 
   it('Public method new with wrong arguments', done => {
+    NotificationMgt = new Notification({
+      position: 'bottom-left',
+      thickBorder: 'left',
+      duration: 3000,
+      transition: 500,
+      maxActive: 5,
+      imgPath: '../src/img/'
+    });
     spyOn(console, 'error').and.callThrough();
     expect(NotificationMgt.new()).toEqual(-1);
     expect(NotificationMgt.new('')).toEqual(-1);
@@ -118,11 +129,22 @@ describe('Notification unit test', () => {
     })).toEqual(-1);
     expect(console.error).toHaveBeenCalledTimes(4);
     expect(console.error).toHaveBeenCalledWith('Notification.js : new() options argument object is invalid.');
+    // Component proper destruction
+    NotificationMgt.destroy();
+    NotificationMgt = null;
     done();
   });
 
 
   it('Public method new', done => {
+    NotificationMgt = new Notification({
+      position: 'bottom-left',
+      thickBorder: 'left',
+      duration: 3000,
+      transition: 500,
+      maxActive: 5,
+      imgPath: '../src/img/'
+    });
     spyOn(console, 'error').and.callThrough();
     expect(NotificationMgt.new({
       type: 'error',
@@ -135,6 +157,9 @@ describe('Notification unit test', () => {
     expect(typeof notification).toEqual('string');
     expect(console.error).not.toHaveBeenCalled();
     NotificationMgt.dismissAll();
+    // Component proper destruction
+    NotificationMgt.destroy();
+    NotificationMgt = null;
     done();
   });
 
