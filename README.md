@@ -1,20 +1,27 @@
 # Notification.js
 
-*Notification.js* is a standalone ES6 module that allows you to easily handle several notifications from different types at the same time. It features a lot of options so you can customize it.
+![](https://badgen.net/badge/version/1.1.0/blue)
+[![License](https://img.shields.io/github/license/ArthurBeaulieu/Notification.js.svg)](https://github.com/ArthurBeaulieu/Notification.js/blob/master/LICENSE.md)
+![](https://badgen.net/badge/documentation/written/green)
+![](https://badgen.net/badge/test/passed/green)
+![](https://badgen.net/badge/dependencies/none/green)
 
-![Version](https://badgen.net/badge/version/1.1.0/green) ![Open Source Love](https://badgen.net/badge/license/GPL-3.0/blue)
+`Notification.js` is a standalone ES6 module that allows you to easily handle several notifications from different types at the same time. It features a lot of options so you can customize it.
 
 ## Get started
 
-*Notification.js* handles four different types of notifications : **Success**, **Info**, **Warning** and **Error**.
+`Notification.js` handles four different types of notifications : **Success**, **Info**, **Warning** and **Error**.
 
-The first step for you to get started with *Notification.js* is to copy both the `dist/Notification.min.js` and `dist/notification.min.css` files in your code base, and the `img` folder anywhere you need. don't forget to give that path to the Notification constructor, so it can find the needed pictures. Once pasted, don't forget to include the style and the script in your HTML page. You're good to go!
+The first step for you to get started with `Notification.js` is to copy both the `dist/Notification.min.js` and `dist/notification.min.css` files in your code base. Once pasted, don't forget to include the style and the script in your HTML page. `Notification.js` is ready to be used.
+
+With ~18Ko minified, `Notification.js` is designed to be stable and remain as light as possible. It is meant to be used application wide.
 
 #### Basic usage
 
-To make *Notification.js* work, you must call for a new notification handler. It will handle all new notifications coming to the stack, with their specificities. Attach preferabkly this handler to the window object, so you can access it from anywhere in your app:
+To make `Notification.js` work, you must call for a new notification handler. It will handle all new notifications coming to the stack, with their specificities. Attach preferably this handler to the window object, so you can access it from anywhere in your app:
 
 ```javascript
+import Notification from 'path/to/Notification.js';
 window.notification = new Notification();
 ```
 
@@ -34,13 +41,13 @@ The message string passed is **mandatory**. Forget to pass it and you will raise
 The Notification constructor can take an options object with the following attributes :
 
 ```javascript
-window.notification = new notification({
+import Notification from 'path/to/Notification.js';
+window.notification = new Notification({
     position: 'top-left',
     thickBorder: 'bottom',
     duration: 2000,
     transition: 100,
-    maxActive: 5,
-    imgPath: '/path/to/img/'
+    maxActive: 5
 });
 ```
 
@@ -51,14 +58,14 @@ let id = window.notification.new({
    type: 'info', // Mandatory
    title: 'My test notification',
    message: 'My test message.', // Mandatory
-   thickBorder: 'top'
+   thickBorder: 'top',
    iconless: false,
    closable: true,
    sticky: true,
    renderTo: document.body,
    CBtitle: 'My callback',
-   callback: function() {
-     alert('Called from My test notification');
+   callback: () => {
+     alert('Called from my test notification');
    }
 });
 ```
@@ -77,15 +84,11 @@ Or dismiss them all :
 window.notification.dismissAll();
 ```
 
-Finaly, if you want to clear the Notification singleton, use the `destroy()` method on the handler :
+Finally, if you want to clear the Notification singleton, use the `destroy()` method on the handler :
 
 ```javascript
 window.notification.destroy();
 ```
-
-#### Further reading
-
-In the `doc` folder, there is a [JSDoc](https://github.com/jsdoc3/jsdoc) that has been generated. It is highly detailled, so we recommend you to read this documentation if you want to enhance or modify the class itself. There are some example in the `src/Notification.html` and a sand box so you can try the system and watch all possibilities given by the passed options.
 
 ## Notification options
 
@@ -115,14 +118,20 @@ In the `doc` folder, there is a [JSDoc](https://github.com/jsdoc3/jsdoc) that ha
 | **CBtitle**     | `''`              | String                                   |
 | **callback**    | `null`            | JavaScript function                      |
 
-## Unit test
+You're now good to go! If however you need more information, you can read the online [documentation](https://arthurbeaulieu.github.io/CustomEvents.js/doc/).
 
-The [Jasmine](https://github.com/jasmine/jasmine) framework is used to perform tests (v3.2.1) on *Notification.js*.
+# Development
 
-You can test the source code locally by opening the `test/SpecRunner.html` file ; because *Notification.js* is a module, you will encounter a CORS error that prevents you to perform the test ; you can either run a local server, or [disable a security flag](https://www.thepolyglotdeveloper.com/2014/08/bypass-cors-errors-testing-apis-locally/) in your browser (mind to re-enable it after test) to bypass this restriction.
+If you clone this repository, you can `npm install` to install development dependencies. This will allow you to build dist file, run the component tests or generate the documentation ;
 
-## Contribute
+- `npm run build` to generate the minified file ;
+- `npm run dev` to watch for any change in source code ;
+- `npm run web-server` to launch a local development server ;
+- `npm run doc` to generate documentation ;
+- `npm run test` to perform all tests at once ;
+- `npm run testdev` to keep browsers open to debug tests ;
+- `npm run beforecommit` to perform tests, generate doc and bundle the JavaScript.
 
-If you want to contribute in any way, please open an issue with your suggestions or even better, make a pull request! I am aware that this module is far from perfect so feel free to help out to make this great again!
+To avoid CORS when locally loading the example HTML file, run the web server. Please do not use it on a production environment. Unit tests are performed on both Firefox and Chrome ; ensure you have both installed before running tests, otherwise they might fail.
 
-June 2018 - March 2019
+If you have any question or idea, feel free to DM or open an issue (or even a PR, who knows) ! I'll be glad to answer your request.

@@ -20,9 +20,9 @@
   },
   "opts": {
     "template": "node_modules/tui-jsdoc-template",
-    "destination": "./doc/",
-    "readme": "./README.md",
-    "package": "./package.json",
+    "destination": "doc/",
+    "readme": "README.md",
+    "package": "package.json",
     "access": "all",
     "recurse": true,
     "verbose": true,
