@@ -84,6 +84,12 @@ Or dismiss them all :
 window.notification.dismissAll();
 ```
 
+Or dismiss them by type :
+
+```JavaScript
+window.notification.dismissType('error');
+```
+
 Finally, if you want to clear the Notification singleton, use the `destroy()` method on the handler :
 
 ```javascript
@@ -101,7 +107,6 @@ window.notification.destroy();
 | **duration**    | `5000 ms`   | Positive integer                                       |
 | **transition**  | `200 ms`    | Positive integer, not greater than half duration       |
 | **maxActive**   | `5`         | Positive integer                                       |
-| **imgPath**     | `./img/`    | The path where img assets resides                      |
 
 #### Notification settings
 
