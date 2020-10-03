@@ -53,7 +53,7 @@ window.notification = new Notification({
 
 The handler is now ready with your custom settings. To call for a new notification, you can still use the typed methods `.success()`, `.info()`, `.warning()` and `.error()` from **Basic Usage**, but you can also use the `.new()` method :
 
-```JavaScript
+```javascript
 let id = window.notification.new({
    type: 'info', // Mandatory
    title: 'My test notification',
@@ -74,19 +74,19 @@ The only difference with the typed methods is that with the `.new()` method, you
 
 As for the typed methods, the `new()` method return the notification ID, in case you want some manual control over your notifications, this is why we store it in the `id` variable. Using this ID, you can dismiss a specific notification :
 
-```JavaScript
+```javascript
 window.notification.dismiss(id);
 ```
 
 Or dismiss them all :
 
-```JavaScript
+```javascript
 window.notification.dismissAll();
 ```
 
 Or dismiss them by type :
 
-```JavaScript
+```javascript
 window.notification.dismissType('error');
 ```
 

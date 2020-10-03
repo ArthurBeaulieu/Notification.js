@@ -88,7 +88,7 @@
   color: black;
   cursor: pointer;
   display: flex;
-  font-size: 0.9em;
+  font-size: .9em;
   height: auto;
   margin: var(--notification-margin);
   min-width: var(--notification-min-width);
@@ -98,7 +98,7 @@
   width: fit-content;
   z-index: 999;
 
-  @include box-shadow(0 0 var(--notification-margin), 0, 0, 0, 0.2);
+  @include box-shadow(0 0 var(--notification-margin), 0, 0, 0, .2);
   @include transition(opacity 1s ease .5s);
   @include user-select(none);
 
@@ -118,14 +118,6 @@
   h1, h2, h3, h4, h5, h6 {
     color: var(--notification-color-dark-text);
     font-weight: bold;
-  }
-
-  button {
-    background-color: transparent;
-    border: var(--notification-border-thickness) solid var(--notification-color-dark-border);
-    border-radius: var(--notification-border-radius);
-    cursor: pointer;
-    padding: (var(--notification-padding) / 2) var(--notification-padding);
   }
 
   .vector-container {
@@ -153,7 +145,7 @@
     }
 
     p {
-      font-size: 0.9em;
+      font-size: .9em;
       line-height: 1.4em;
       margin: 0;
       margin-bottom: calc(var(--notification-padding) / 2);
@@ -164,9 +156,13 @@
     }
 
     button {
-      font-size: 0.9em;
+      background-color: transparent;
+      border: var(--notification-border-thickness) solid var(--notification-color-dark-border);
+      border-radius: var(--notification-border-radius);
+      cursor: pointer;
+      font-size: .9em;
       margin-bottom: 0;
-      padding: (var(--notification-padding) / 6) (var(--notification-padding) / 2);
+      padding: calc(var(--notification-padding) / 2) var(--notification-padding);
     }
   }
 
@@ -186,7 +182,7 @@
     border-radius: 50%;
     color: var(--notification-color-dark-text);
     display: flex;
-    font-size: 0.85em;
+    font-size: .85em;
     height: var(--notification-counter-size);
     justify-content: center;
     left: -7px;
